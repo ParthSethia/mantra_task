@@ -1,0 +1,30 @@
+digraph MultimodalChatAssistant {
+	dpi=300 rankdir=LR size=8
+	Video [label="Video Input (≤10min, 60fps)" fillcolor=lightblue shape=box style=filled]
+	Frames [label="Frame Extraction / Sampling
+(OpenCV, PyAV)" fillcolor=lightgrey shape=box style=filled]
+	Audio [label="Audio Extraction & Transcription
+(Whisper, Vosk)" fillcolor=lightgrey shape=box style=filled]
+	VisualEvents [label="Visual Event Recognition
+(YOLOv8, SlowFast, VideoMAE)" fillcolor=lightyellow shape=box style=filled]
+	TranscriptAnalysis [label="Transcript Analysis & Key Moment Detection
+(TextRank, BERT, LLM)" fillcolor=lightyellow shape=box style=filled]
+	Fusion [label="Multimodal Fusion
+(Combine Visual + Audio Insights)" fillcolor=orange shape=box style=filled]
+	Summarization [label="Summarization Engine
+(LLM/VLM e.g., LLaVA, BLIP-2)" fillcolor=lightgreen shape=box style=filled]
+	VectorDB [label="Knowledge Store / Vector DB
+(FAISS, Chroma)" fillcolor=lightpink shape=box style=filled]
+	Chat [label="Multi-turn Chat Assistant
+(FastAPI + LLM, Context Memory)" fillcolor=lightblue shape=box style=filled]
+	Video -> Frames
+	Video -> Audio
+	Frames -> VisualEvents
+	Audio -> TranscriptAnalysis
+	VisualEvents -> Fusion
+	TranscriptAnalysis -> Fusion
+	Fusion -> Summarization
+	Summarization -> VectorDB
+	VectorDB -> Chat
+	Summarization -> Chat
+}
