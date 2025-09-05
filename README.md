@@ -1,6 +1,12 @@
 # Multimodal Video Chat Assistant
 
-A sophisticated AI-powered system for intelligent video analysis, event recognition, and multi-turn conversational chat. This system processes videos efficiently to identify key moments, extract insights, and provide intelligent summarization across various domains including surveillance, educational content, podcasts, and general video analysis.
+A sophisticated AI-powered system for intelligent video analysis, event recognition, and multi-turn conversational chat. This system processes videos efficiently to identify key moments, extract insights, and provide intelligent summarization across various domains including surveillance, educational content, podcasts, and general video analysis. 
+
+**[IMPORTANT NOTE!!!]**
+
+**Note:** For the testing, in the configuration file, the `fps_target` was set as 1. Set it to a higher number for better results. See the config information for more.
+
+**Note:** For testing the smallest model of whisper was used. That didn't work properly (Bad Transcription). Set a higher size in the config for the correct transcript results. Same goes for Florence - 2 and Blip. Use Ollama based VLMs for better results but will increase thre processing time.
 
 ## 🎯 Features
 
@@ -14,6 +20,8 @@ A sophisticated AI-powered system for intelligent video analysis, event recognit
 - **VLM Integration**: Supports vision-language models for comprehensive video understanding
 
 ## 🏗️ Architecture
+
+![alt text](image.png)
 
 The system is built with a modular architecture consisting of:
 
@@ -110,7 +118,7 @@ Mantra Softech/
 3. **Install Ollama and required models**:
    ```bash
    # Install Ollama (visit https://ollama.ai for platform-specific instructions)
-   ollama pull llama3.1:8b
+   ollama pull gemma3:4b
    ollama pull mxbai-embed-large
    ```
 
@@ -120,23 +128,6 @@ Mantra Softech/
    ```
 
 ### Usage
-
-#### Command Line Interface
-
-**Basic video analysis**:
-```bash
-python main.py path/to/your/video.mp4
-```
-
-**CCTV/Surveillance video analysis**:
-```bash
-python main.py path/to/cctv_footage.mp4 --config config/config_cctv.yaml
-```
-
-**Custom configuration**:
-```bash
-python main.py video.mp4 --config custom_config.yaml --cache-dir ./my_cache
-```
 
 #### Web Interface
 
@@ -149,30 +140,18 @@ Then access:
 - **Gradio Interface**: http://localhost:7860
 - **REST API**: http://localhost:5000
 
-#### Available Commands
-
-```bash
-# Interactive chat mode
-python main.py video.mp4 --interactive
-
-# Batch processing with questions file
-python main.py video.mp4 --questions questions.txt
-
-# Enable debug mode
-python main.py video.mp4 --debug
-
-# Custom cache directory
-python main.py video.mp4 --cache-dir ./custom_cache
-```
+Gradio Interface to be used to use the chatbot.
 
 ## 🛠️ Configuration
 
 ### Main Configuration (config/config.yaml)
 
+Specifically set the fps_target. This basically tells how many frames per second to be processed for the video. For example, when set to 1, it just processes 1 frame for 1 second of video. This might work efficiently for a podcast style video, but for a cctv style footage, you might increase the number. For ex. see the config_cctv.yaml. You can keep a higher number for all the videos in general.
+
 ```yaml
 # Video processing
 video:
-  fps_target: 1.0
+  fps_target: 1.0 
   max_duration: 600
   resize_height: 480
 
@@ -254,34 +233,5 @@ See `requirements.txt` for complete dependency list. Key dependencies include:
 - **Database**: Milvus (vector), NetworkX (graph)
 - **Web Framework**: Flask, Gradio
 - **Audio**: OpenAI Whisper, Librosa
-
-## 📈 Future Enhancements
-
-- Integration with cloud-based VLMs (GPT-4V, Claude Vision)
-- Support for live video streaming
-- Enhanced multi-language support
-- Advanced analytics and reporting
-- Mobile application interface
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-[Add your license information here]
-
-## 📞 Support
-
-For issues and questions:
-- Check the `IMPLEMENTATION_PLAN.md` for detailed technical documentation
-- Review test files in the `testing/` directory for usage examples
-- Open an issue for bug reports or feature requests
-
----
 
 **Test Data**: Sample videos available at: https://drive.google.com/drive/folders/1RYil2fWSlkKsmf65CwSav3H4h5DDHikl

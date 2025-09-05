@@ -85,7 +85,8 @@ Mantra Softech/
 
 ## Implementation Progress
 
-### Phase 1: Foundation ✅ COMPLETED
+### 1. Video Frame and Transcript Processing ✅ IMPLEMENTED
+
 - ✅ **Video Frame Processing Pipeline**: `tools/video_frame_processor.py`
   - Frame extraction at configurable FPS (1 fps default, optimized with resizing)
   - VLM-based frame analysis and importance scoring 
@@ -136,9 +137,7 @@ Mantra Softech/
   - Important moments listing and analysis
   - Vector search integration for relevant content retrieval
 
-### Phase 2: Advanced Features ✅ COMPLETED
-
-### 2. Object Detection & Tracking System ✅ IMPLEMENTED
+### 2. Object Detection & Tracking System ✅ IMPLEMENTED (To be debugged. Might be errorronous)
 
 **Completed**: `tools/object_tracker.py`
 - YOLO11 object detection with configurable model sizes (n/s/m/l/x)
@@ -306,7 +305,7 @@ memory:
          │                                              │
          ▼                                              ▼
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│ Frame Processor │───▶│  VLM Analysis    │───▶│ Importance Score│
+│ Frame Processor │───▶│  VLM Analysis    │───▶│      Score      │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
          │                       │                       │
          ▼                       ▼                       ▼
