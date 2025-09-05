@@ -3,8 +3,9 @@ opencv-python>=4.8.0
 moviepy>=1.0.3
 Pillow>=10.0.0
 
-# Audio transcription
+# Audio transcription and analysis
 openai-whisper>=20231117
+librosa>=0.10.0  # For audio silence detection
 
 # LLM and embeddings (Ollama-based)
 langchain>=0.1.0
@@ -19,12 +20,22 @@ pymilvus>=2.3.0
 PyYAML>=6.0
 numpy>=1.24.0
 
+# Additional utilities (built-in but listed for completeness)
+# hashlib - for cache validation checksums (built-in)
+# pathlib - for path handling (built-in)
+
 # HuggingFace models (optional - for BLIP/Florence-2 support)
 torch>=2.0.0
 transformers>=4.37.0  # Updated for better Florence-2 support
 accelerate>=0.24.0
 # Alternative: Use transformers==4.36.2 if Florence-2 issues persist
 
-# Optional: For future object tracking
-# torchvision>=0.15.0
-# ultralytics>=8.0.0
+# Object tracking (optional - for Phase 2+ features)
+ultralytics>=8.0.0
+deep-sort-realtime>=1.3.0
+
+# Graph database
+networkx>=3.0
+
+# Optional: Neo4j (for production graph database)
+# neo4j>=5.0.0

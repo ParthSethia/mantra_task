@@ -11,6 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 from video_processor import VideoProcessor
 from utils.chat_memory import ChatMemory
 from utils.vector_store import VideoVectorStore
+from utils.graph_store import VideoGraphStore
 
 class EnhancedVideoChat:
     def __init__(self, config_path: str = "config.yaml"):
@@ -21,6 +22,7 @@ class EnhancedVideoChat:
         self.video_processor = VideoProcessor(config_path)
         self.chat_memory = ChatMemory(config_path)
         self.vector_store = VideoVectorStore(config_path)
+        self.graph_store = VideoGraphStore(config_path)
         
         # Initialize LLM
         vlm_config = self.config['vlm']
@@ -40,11 +42,16 @@ class EnhancedVideoChat:
         # Process video
         results = self.video_processor.process_video_complete(video_path)
         
-        if results['processing_status'] != 'completed':
+        if results['processing_status'] not in ['completed', 'completed_from_cache']:
             return f"Error processing video: {results.get('error', 'Unknown error')}"
         
+        # Check if loaded from cache
+        if results['processing_status'] == 'completed_from_cache':
+            cache_info = results.get('cache_info', {})
+            print(f"✓ Loaded from cache (processed: {cache_info.get('processed_at', 'unknown')})")
+        
         # Load processed data
-        self.current_video_data = self.video_processor.load_processed_data()
+        self.current_video_data = self.video_processor.load_processed_data(video_path)
         
         # Add to vector store
         if self.current_video_data:
@@ -57,6 +64,11 @@ class EnhancedVideoChat:
             self.vector_store.add_transcript_segments(
                 self.current_video_data['transcript']['segments']
             )
+            
+            # Load knowledge graph
+            graph_file = os.path.join(self.video_processor.cache_config['metadata_directory'], 'knowledge_graph.json')
+            if os.path.exists(graph_file):
+                self.graph_store.load_graph(graph_file)
         
         # Start new chat session with video context
         session_id = self.chat_memory.start_new_session()
@@ -83,17 +95,23 @@ class EnhancedVideoChat:
         transcript = self.current_video_data['transcript']
         important_frames = self.current_video_data['important_frames'][:5]  # Top 5 frames
         
-        # Prepare context for LLM
+        # Prepare context for LLM - adapt based on whether transcript exists
+        has_transcript = transcript.get('has_transcript', bool(transcript.get('segments')))
+        
         context = f"""
 Video Duration: {int(metadata['duration'] // 60)}:{int(metadata['duration'] % 60):02d}
 Total Frames Analyzed: {metadata['total_frames_analyzed']}
 Important Moments Found: {metadata['important_frames_count']}
+Content Type: {'Video with Audio/Speech' if has_transcript else 'Visual-Only Video (e.g., CCTV/Surveillance)'}
+"""
 
+        if has_transcript:
+            context += f"""
 TRANSCRIPT:
 {transcript['full_text'][:1000]}...
-
-IMPORTANT VISUAL MOMENTS:
 """
+
+        context += "\nIMPORTANT VISUAL MOMENTS:"
         
         for frame in important_frames:
             timestamp = frame['timestamp']
@@ -101,11 +119,13 @@ IMPORTANT VISUAL MOMENTS:
             seconds = int(timestamp % 60)
             context += f"\n• {minutes:02d}:{seconds:02d} - {frame['vlm_analysis'][:100]}..."
         
-        summary_prompt = f"""Based on the video analysis below, provide a comprehensive summary of this video. Include:
+        # Adapt summary prompt based on content type
+        if has_transcript:
+            summary_prompt = f"""Based on the video analysis below, provide a comprehensive summary of this video. Include:
 
 1. **Video Overview**: What type of content is this and what's the main topic?
 2. **Key Moments**: List the most important timestamps with brief descriptions
-3. **Main Points**: What are the key takeaways or important information?
+3. **Main Points**: What are the key takeaways or important information from both audio and visual content?
 4. **Visual Elements**: What notable visual elements or scenes were observed?
 
 Make the summary conversational and helpful for someone who wants to understand the video content quickly.
@@ -113,6 +133,19 @@ Make the summary conversational and helpful for someone who wants to understand 
 {context}
 
 Provide a natural, engaging summary that I can use to start a conversation about this video."""
+        else:
+            summary_prompt = f"""Based on the visual analysis below, provide a comprehensive summary of this video. This appears to be a visual-only video (like CCTV footage) without meaningful audio content. Include:
+
+1. **Video Overview**: What type of visual content is this? (surveillance, security footage, etc.)
+2. **Key Visual Moments**: List the most important timestamps with descriptions of what's happening visually
+3. **Visual Activity**: What are the main activities, movements, or events observed?
+4. **Scene Elements**: What objects, people, or notable visual elements appear throughout?
+
+Focus entirely on visual content and make the summary helpful for someone monitoring or reviewing this footage.
+
+{context}
+
+Provide a clear, practical summary focused on visual events and activities."""
         
         try:
             response = self.llm.invoke([HumanMessage(content=summary_prompt)])
@@ -219,10 +252,131 @@ USER QUESTION: {user_message}
 Please provide a helpful, specific answer based on the video content. Include specific timestamps when relevant. Be conversational and engaging."""
         
         try:
+            # Check if this is a temporal query
+            temporal_keywords = ['before', 'after', 'together', 'same time', 'co-occur']
+            if any(keyword in user_message.lower() for keyword in temporal_keywords):
+                temporal_response = self.handle_temporal_query(user_message)
+                return temporal_response
+            
+            # Check if this is an object-related query
+            object_keywords = ['object', 'track', 'car', 'person', 'people', 'vehicle']
+            if any(keyword in user_message.lower() for keyword in object_keywords):
+                object_info = self.get_object_information(user_message)
+                if "No object tracking data" not in object_info:
+                    return object_info
+            
             response = self.llm.invoke([HumanMessage(content=context_prompt)])
             return response.content
         except Exception as e:
             return f"I encountered an error generating a response: {str(e)}. Please try rephrasing your question."
+    
+    def handle_temporal_query(self, user_message: str) -> str:
+        """Handle temporal reasoning queries using graph database"""
+        try:
+            # Use graph store to process temporal queries
+            query_result = self.graph_store.query_temporal_relationships(user_message)
+            
+            if query_result['query_type'] == 'before':
+                events = query_result.get('events', [])
+                if events:
+                    response = f"Events before {query_result['timestamp']//60:.0f}:{query_result['timestamp']%60:02.0f}:\n\n"
+                    for event in events:
+                        timestamp = event['timestamp']
+                        minutes = int(timestamp // 60)
+                        seconds = int(timestamp % 60)
+                        
+                        if event['node_type'] == 'frame':
+                            response += f"📸 {minutes:02d}:{seconds:02d} - {event['data']['analysis'][:100]}...\n"
+                        elif event['node_type'] == 'transcript_segment':
+                            response += f"🎵 {minutes:02d}:{seconds:02d} - {event['data']['text'][:100]}...\n"
+                        elif event['node_type'] == 'object':
+                            response += f"👀 {minutes:02d}:{seconds:02d} - {event['data']['class_name']} detected\n"
+                    return response
+                else:
+                    return f"No events found before the specified time."
+            
+            elif query_result['query_type'] == 'after':
+                events = query_result.get('events', [])
+                if events:
+                    response = f"Events after {query_result['timestamp']//60:.0f}:{query_result['timestamp']%60:02.0f}:\n\n"
+                    for event in events:
+                        timestamp = event['timestamp']
+                        minutes = int(timestamp // 60)
+                        seconds = int(timestamp % 60)
+                        
+                        if event['node_type'] == 'frame':
+                            response += f"📸 {minutes:02d}:{seconds:02d} - {event['data']['analysis'][:100]}...\n"
+                        elif event['node_type'] == 'transcript_segment':
+                            response += f"🎵 {minutes:02d}:{seconds:02d} - {event['data']['text'][:100]}...\n"
+                        elif event['node_type'] == 'object':
+                            response += f"👀 {minutes:02d}:{seconds:02d} - {event['data']['class_name']} detected\n"
+                    return response
+                else:
+                    return f"No events found after the specified time."
+            
+            elif query_result['query_type'] == 'co_occurring':
+                objects = query_result.get('objects', [])
+                if objects:
+                    response = f"Objects present around {query_result['timestamp']//60:.0f}:{query_result['timestamp']%60:02.0f}:\n\n"
+                    for obj in objects:
+                        response += f"• {obj['class_name']} (Track {obj['track_id']}) - Active from "
+                        response += f"{obj['first_seen']//60:.0f}:{obj['first_seen']%60:02.0f} to "
+                        response += f"{obj['last_seen']//60:.0f}:{obj['last_seen']%60:02.0f}\n"
+                    return response
+                else:
+                    return f"No objects found around the specified time."
+            
+            else:
+                return query_result.get('message', 'Query not understood. Try asking about events before/after a timestamp.')
+                
+        except Exception as e:
+            return f"Error processing temporal query: {str(e)}"
+    
+    def get_object_information(self, query: str) -> str:
+        """Get information about tracked objects"""
+        if not self.current_video_data or not self.current_video_data.get('object_tracking'):
+            return "No object tracking data available for this video."
+        
+        tracking_data = self.current_video_data['object_tracking']
+        summary = tracking_data.get('summary', {})
+        
+        query_lower = query.lower()
+        
+        if 'objects' in query_lower or 'tracks' in query_lower:
+            response = f"Object Tracking Summary:\n\n"
+            response += f"Total tracks found: {summary.get('total_tracks', 0)}\n"
+            response += f"Active tracks: {summary.get('active_tracks', 0)}\n\n"
+            
+            track_classes = summary.get('track_classes', {})
+            if track_classes:
+                response += "Objects detected:\n"
+                for class_name, count in track_classes.items():
+                    response += f"• {class_name}: {count} tracks\n"
+            
+            return response
+        
+        # Look for specific object classes in the query
+        if tracking_data.get('tracks'):
+            relevant_tracks = []
+            for track_id, track_data in tracking_data['tracks'].items():
+                class_name = track_data.get('class_name', '')
+                if class_name.lower() in query_lower or f"track {track_id}" in query_lower:
+                    relevant_tracks.append(track_data)
+            
+            if relevant_tracks:
+                response = f"Found {len(relevant_tracks)} relevant tracks:\n\n"
+                for track in relevant_tracks[:5]:  # Limit to 5 tracks
+                    first_seen = track.get('first_seen', 0)
+                    last_seen = track.get('last_seen', 0)
+                    response += f"• {track.get('class_name', 'Unknown')} (Track {track.get('track_id')})\n"
+                    response += f"  Active: {first_seen//60:.0f}:{first_seen%60:02.0f} - {last_seen//60:.0f}:{last_seen%60:02.0f}\n"
+                    response += f"  Detections: {len(track.get('detections', []))}\n\n"
+                
+                return response
+            else:
+                return f"No tracks found matching your query. Available objects: {', '.join(summary.get('track_classes', {}).keys())}"
+        
+        return "No object tracking data available."
     
     def get_timestamp_context(self, timestamp: float) -> str:
         """Get detailed context around a specific timestamp"""

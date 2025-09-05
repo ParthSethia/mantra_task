@@ -1,7 +1,7 @@
 # Video processing settings
 video_processing:
   input_path: "data/test_sample5.mp4"
-  frame_extraction_fps: 1
+  frame_extraction_fps: 15
   chunk_duration_seconds: 30
   overlap_seconds: 5
   supported_formats: [mp4, avi, mov, mkv]
@@ -11,9 +11,13 @@ video_processing:
   
 # Audio processing
 audio_processing:
+  enabled: true  # Set to false for videos without audio (CCTV, etc.)
   output_path: "cache/audio.mp3"
   whisper_model_size: "small"
   transcript_output_path: "cache/transcript.txt"
+  # Audio detection settings
+  min_audio_duration: 1.0  # Skip transcription if audio < 1 second
+  silence_threshold: -40  # dB threshold to detect if audio exists
 
 # VLM settings
 vlm:
@@ -46,12 +50,36 @@ cache:
   directory: "cache"
   frames_directory: "cache/frames"
   metadata_directory: "cache/metadata"
+  # Video processing cache
+  enable_video_cache: true
+  cache_validation: "checksum"  # "checksum", "modified_time", or "disabled"
+  max_cache_age_hours: 168  # 7 days - automatically reprocess after this time
+  cache_index_file: "cache/video_cache_index.json"
   
 # Vector store settings
 vector_store:
   uri: "./milvus_video.db"
   index_type: "FLAT"
   metric_type: "L2"
+  
+# Object tracking settings
+object_tracking:
+  enabled: true
+  detection_model: "yolo11"  # "yolo" or "detectron2"
+  model_size: "n"  # yolo sizes: n, s, m, l, x (n=fastest, x=most accurate)
+  confidence_threshold: 0.5
+  tracking_algorithm: "deepsort"  # "deepsort" or "bytetrack"
+  max_tracks_per_frame: 50
+  track_classes: ["person", "car", "truck", "bus", "bicycle", "motorbike"]  # Objects to track
+  
+# Graph database settings
+graph_database:
+  enabled: true
+  type: "networkx"  # "networkx" for local, "neo4j" for production
+  # Neo4j settings (if using neo4j)
+  neo4j_uri: "bolt://localhost:7687"
+  neo4j_user: "neo4j"
+  neo4j_password: "password"
   
 # Memory settings
 memory:
