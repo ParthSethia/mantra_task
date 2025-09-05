@@ -55,15 +55,24 @@ class EnhancedVideoChat:
         
         # Add to vector store
         if self.current_video_data:
+            print(f"DEBUG: Current video data keys: {list(self.current_video_data.keys())}")
+            
             # Add frame descriptions
-            self.vector_store.add_frame_descriptions(
-                self.current_video_data['important_frames']
-            )
+            important_frames = self.current_video_data.get('important_frames', [])
+            print(f"DEBUG: Adding {len(important_frames)} important frames to vector store")
+            self.vector_store.add_frame_descriptions(important_frames)
             
             # Add transcript segments
-            self.vector_store.add_transcript_segments(
-                self.current_video_data['transcript']['segments']
-            )
+            transcript_data = self.current_video_data.get('transcript', {})
+            transcript_segments = transcript_data.get('segments', [])
+            print(f"DEBUG: Found transcript data: {bool(transcript_data)}")
+            print(f"DEBUG: Found {len(transcript_segments)} transcript segments")
+            
+            if transcript_segments:
+                print(f"DEBUG: First transcript segment: {transcript_segments[0]}")
+                self.vector_store.add_transcript_segments(transcript_segments)
+            else:
+                print("DEBUG: No transcript segments found to add to vector store")
             
             # Load knowledge graph
             graph_file = os.path.join(self.video_processor.cache_config['metadata_directory'], 'knowledge_graph.json')
@@ -185,24 +194,33 @@ Provide a clear, practical summary focused on visual events and activities."""
         
         try:
             # Search in vector store
-            search_results = self.vector_store.search_by_query(query, k=5)
+            search_results = self.vector_store.search_by_query(query, k=10)  # Increased k to get more results
             
             relevant_frames = []
             relevant_transcript = []
             
-            for result in search_results:
-                if result.metadata.get('type') == 'frame_analysis':
+            print(f"DEBUG: Vector search returned {len(search_results)} results for query: '{query}'")
+            
+            for i, result in enumerate(search_results):
+                result_type = result.metadata.get('type', 'unknown')
+                print(f"DEBUG: Result {i}: type='{result_type}', content preview='{result.page_content[:100]}...'")
+                
+                if result_type == 'frame_analysis':
                     relevant_frames.append({
                         'timestamp': result.metadata.get('timestamp'),
                         'content': result.page_content,
                         'importance_score': result.metadata.get('importance_score')
                     })
-                elif result.metadata.get('type') == 'transcript_segment':
+                elif result_type == 'transcript_segment':
                     relevant_transcript.append({
                         'start_time': result.metadata.get('start_time'),
                         'end_time': result.metadata.get('end_time'),
                         'text': result.page_content
                     })
+                else:
+                    print(f"DEBUG: Unknown result type: {result_type}")
+            
+            print(f"DEBUG: Found {len(relevant_frames)} frame results, {len(relevant_transcript)} transcript results")
             
             return {
                 'frames': relevant_frames[:3],  # Top 3 relevant frames
@@ -217,9 +235,21 @@ Provide a clear, practical summary focused on visual events and activities."""
         """Generate contextual response using LLM"""
         
         # Build context prompt
-        context_prompt = f"""You are a video analysis assistant. You have processed a video and can answer questions about it using the following context:
+        has_transcript = len(relevant_content.get('transcript_segments', [])) > 0
+        has_visual = len(relevant_content.get('frames', [])) > 0
+        
+        context_prompt = f"""You are a video analysis assistant. You have processed a video and can answer questions about it using BOTH visual analysis and transcript information.
 
 CURRENT VIDEO: {context.get('video_context', {}).get('video_path', 'Unknown')}
+AVAILABLE CONTENT: {"Transcript + Visual" if has_transcript and has_visual else "Transcript Only" if has_transcript else "Visual Only" if has_visual else "Limited"}
+
+IMPORTANT: When answering questions, you should:
+- Use BOTH transcript content and visual analysis when available
+- For questions about "transcript information" or "what was said", prioritize transcript content
+- For questions about "visual moments" or "what was seen", prioritize visual analysis  
+- For general questions, combine both types of information for comprehensive answers
+- Always mention timestamps when referencing specific moments
+
 CONVERSATION HISTORY:
 """
         
@@ -230,6 +260,8 @@ CONVERSATION HISTORY:
             context_prompt += f"{role}: {content}\n"
         
         # Add relevant content
+        print(f"DEBUG: Building context with {len(relevant_content['frames'])} frames, {len(relevant_content['transcript_segments'])} transcript segments")
+        
         if relevant_content['frames']:
             context_prompt += "\nRELEVANT VISUAL MOMENTS:\n"
             for frame in relevant_content['frames']:
@@ -245,6 +277,9 @@ CONVERSATION HISTORY:
                 minutes = int(start_time // 60)
                 seconds = int(start_time % 60)
                 context_prompt += f"• {minutes:02d}:{seconds:02d} - {segment['text'][:150]}...\n"
+            print(f"DEBUG: Added {len(relevant_content['transcript_segments'])} transcript segments to context")
+        else:
+            print("DEBUG: No transcript segments found in relevant content")
         
         context_prompt += f"""
 USER QUESTION: {user_message}

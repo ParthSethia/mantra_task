@@ -1,0 +1,530 @@
+[
+  {
+    "frame_id": 0,
+    "timestamp": 0.0,
+    "frame_path": "cache/frames/frame_000000_0.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a cupboard and a plant.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 1,
+    "timestamp": 1.0,
+    "frame_path": "cache/frames/frame_000001_1.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. At the top of the image there is text that reads \"Did you?\"'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 2,
+    "timestamp": 2.0,
+    "frame_path": "cache/frames/frame_000002_2.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing a white dress and spectacles. On the table there is a microphone stand and a plant, and in the background there is an object on the shelf and a wall. The text on the image reads \"Did you? Have you?\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 3,
+    "timestamp": 3.0,
+    "frame_path": "cache/frames/frame_000003_3.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with something written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 4,
+    "timestamp": 4.0,
+    "frame_path": "cache/frames/frame_000004_4.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you?\" in Hindi.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 5,
+    "timestamp": 5.0,
+    "frame_path": "cache/frames/frame_000005_5.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you?\" in Hindi.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 6,
+    "timestamp": 6.0,
+    "frame_path": "cache/frames/frame_000006_6.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her and the words \"Did you? Have you?\" written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 7,
+    "timestamp": 7.0,
+    "frame_path": "cache/frames/frame_000007_7.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you? Past Hindi Actions\".'}\nIMPORTANCE: 0.95\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.95,
+    "analyzed": true
+  },
+  {
+    "frame_id": 8,
+    "timestamp": 8.0,
+    "frame_path": "cache/frames/frame_000008_8.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you? Past Hindi Actions\".'}\nIMPORTANCE: 0.90\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.8999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 9,
+    "timestamp": 9.0,
+    "frame_path": "cache/frames/frame_000009_9.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there is an object, and in the background there are house plants and a wall. The text on the image reads \"Did you? Have you? Past Hindi Actions\".'}\nIMPORTANCE: 0.90\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.8999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 10,
+    "timestamp": 10.0,
+    "frame_path": "cache/frames/frame_000010_10.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her and the words \"Did you? Have you?\" written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 11,
+    "timestamp": 11.0,
+    "frame_path": "cache/frames/frame_000011_11.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her and the words \"Did you? Have you?\" written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 12,
+    "timestamp": 12.0,
+    "frame_path": "cache/frames/frame_000012_12.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a cupboard and a plant. There is also a watermark on the image.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 13,
+    "timestamp": 13.0,
+    "frame_path": "cache/frames/frame_000013_13.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is an object, and in the background there are plants and a wall. At the top of the image there is text that reads \"Did you? Useple Pie\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 14,
+    "timestamp": 14.0,
+    "frame_path": "cache/frames/frame_000014_14.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the wall behind her is a poster with the words \"Did you? Used in Simple Past Tense\" written on it.'}\nIMPORTANCE: 0.70\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7,
+    "analyzed": true
+  },
+  {
+    "frame_id": 15,
+    "timestamp": 15.0,
+    "frame_path": "cache/frames/frame_000015_15.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. Behind her is a wall with a cupboard filled with various items, and the words \"Did you? Used in Simple Past Tense\" are written across the image.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 16,
+    "timestamp": 16.0,
+    "frame_path": "cache/frames/frame_000016_16.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are house plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 17,
+    "timestamp": 17.0,
+    "frame_path": "cache/frames/frame_000017_17.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are house plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 18,
+    "timestamp": 18.0,
+    "frame_path": "cache/frames/frame_000018_18.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are house plants and a wall. At the top of the image there is some text which reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 19,
+    "timestamp": 19.0,
+    "frame_path": "cache/frames/frame_000019_19.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are house plants and a wall. At the top of the image there is some text which reads \"English Grammar in Hindi\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 20,
+    "timestamp": 20.0,
+    "frame_path": "cache/frames/frame_000020_20.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 21,
+    "timestamp": 21.0,
+    "frame_path": "cache/frames/frame_000021_21.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"English Grammar in Hindi\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 22,
+    "timestamp": 22.0,
+    "frame_path": "cache/frames/frame_000022_22.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 23,
+    "timestamp": 23.0,
+    "frame_path": "cache/frames/frame_000023_23.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 24,
+    "timestamp": 24.0,
+    "frame_path": "cache/frames/frame_000024_24.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her. She is wearing a white dress and a watch, and there is a plant to her left. The background is slightly blurred, giving the image a dreamy feel.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 25,
+    "timestamp": 25.0,
+    "frame_path": "cache/frames/frame_000025_25.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are house plants and a wall. At the top of the image there is some text, suggesting that the woman is in the middle of a video call.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 26,
+    "timestamp": 26.0,
+    "frame_path": "cache/frames/frame_000026_26.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a wall with text that reads \"Did you call him at 5 pm? Specific time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 27,
+    "timestamp": 27.0,
+    "frame_path": "cache/frames/frame_000027_27.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a cupboard and a plant. The text on the image reads \"Did you call him at 5 pm? Specific time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 28,
+    "timestamp": 28.0,
+    "frame_path": "cache/frames/frame_000028_28.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a cupboard and a plant. The text on the image reads \"Did you call him at 5 pm? Specific time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 29,
+    "timestamp": 29.0,
+    "frame_path": "cache/frames/frame_000029_29.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with something written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 30,
+    "timestamp": 30.0,
+    "frame_path": "cache/frames/frame_000030_30.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text, suggesting that this is a screenshot of a video call.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 31,
+    "timestamp": 31.0,
+    "frame_path": "cache/frames/frame_000031_31.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text, suggesting that the woman is participating in an online English course.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 32,
+    "timestamp": 32.0,
+    "frame_path": "cache/frames/frame_000032_32.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a window and a plant.'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 33,
+    "timestamp": 33.0,
+    "frame_path": "cache/frames/frame_000033_33.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you watch the movie last week? Specific time\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 34,
+    "timestamp": 34.0,
+    "frame_path": "cache/frames/frame_000034_34.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with something written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 35,
+    "timestamp": 35.0,
+    "frame_path": "cache/frames/frame_000035_35.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you watch the movie last week? Specific time\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 36,
+    "timestamp": 36.0,
+    "frame_path": "cache/frames/frame_000036_36.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you watch the movie last week? Specific time\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 37,
+    "timestamp": 37.0,
+    "frame_path": "cache/frames/frame_000037_37.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with text on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 38,
+    "timestamp": 38.0,
+    "frame_path": "cache/frames/frame_000038_38.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you? Online English Courses\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 39,
+    "timestamp": 39.0,
+    "frame_path": "cache/frames/frame_000039_39.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you? Used in Present Perfect Tense\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 40,
+    "timestamp": 40.0,
+    "frame_path": "cache/frames/frame_000040_40.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you? Used in Present Perfect Tense\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 41,
+    "timestamp": 41.0,
+    "frame_path": "cache/frames/frame_000041_41.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Hindi Online English Courses\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 42,
+    "timestamp": 42.0,
+    "frame_path": "cache/frames/frame_000042_42.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Hindi Online English Courses\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 43,
+    "timestamp": 43.0,
+    "frame_path": "cache/frames/frame_000043_43.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Hindi Online English Courses\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 44,
+    "timestamp": 44.0,
+    "frame_path": "cache/frames/frame_000044_44.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Hindi Quotes in Hindi\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 45,
+    "timestamp": 45.0,
+    "frame_path": "cache/frames/frame_000045_45.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a plant and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 46,
+    "timestamp": 46.0,
+    "frame_path": "cache/frames/frame_000046_46.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 47,
+    "timestamp": 47.0,
+    "frame_path": "cache/frames/frame_000047_47.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 48,
+    "timestamp": 48.0,
+    "frame_path": "cache/frames/frame_000048_48.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a plant and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 49,
+    "timestamp": 49.0,
+    "frame_path": "cache/frames/frame_000049_49.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a plant and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 50,
+    "timestamp": 50.0,
+    "frame_path": "cache/frames/frame_000050_50.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 51,
+    "timestamp": 51.0,
+    "frame_path": "cache/frames/frame_000051_51.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a plant and a cupboard.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 52,
+    "timestamp": 52.0,
+    "frame_path": "cache/frames/frame_000052_52.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 53,
+    "timestamp": 53.0,
+    "frame_path": "cache/frames/frame_000053_53.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there are plants and a wall. At the top of the image, there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 54,
+    "timestamp": 54.0,
+    "frame_path": "cache/frames/frame_000054_54.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 55,
+    "timestamp": 55.0,
+    "frame_path": "cache/frames/frame_000055_55.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  },
+  {
+    "frame_id": 56,
+    "timestamp": 56.0,
+    "frame_path": "cache/frames/frame_000056_56.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you written the email? Hindi\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 57,
+    "timestamp": 57.0,
+    "frame_path": "cache/frames/frame_000057_57.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 58,
+    "timestamp": 58.0,
+    "frame_path": "cache/frames/frame_000058_58.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is an object, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 59,
+    "timestamp": 59.0,
+    "frame_path": "cache/frames/frame_000059_59.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 60,
+    "timestamp": 60.0,
+    "frame_path": "cache/frames/frame_000060_60.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 61,
+    "timestamp": 61.0,
+    "frame_path": "cache/frames/frame_000061_61.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Have you ever visited God? Life experience in Hindi\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 62,
+    "timestamp": 62.0,
+    "frame_path": "cache/frames/frame_000062_62.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing a white t-shirt with the words \"Have you ever visited Goa? Life Experience\" written on it, suggesting that she is taking an online English course.'}\nIMPORTANCE: 0.60\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.6,
+    "analyzed": true
+  },
+  {
+    "frame_id": 63,
+    "timestamp": 63.0,
+    "frame_path": "cache/frames/frame_000063_63.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a window and a plant. The text on the image reads \"Tried sushi? Did you have you?\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.85,
+    "analyzed": true
+  },
+  {
+    "frame_id": 64,
+    "timestamp": 64.0,
+    "frame_path": "cache/frames/frame_000064_64.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, surrounded by plants and a wall in the background. She appears to be in the middle of an online English course, as indicated by the text at the top of the image.'}\nIMPORTANCE: 0.70\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7,
+    "analyzed": true
+  },
+  {
+    "frame_id": 65,
+    "timestamp": 65.0,
+    "frame_path": "cache/frames/frame_000065_65.00s.jpg",
+    "vlm_analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing a white dress and spectacles. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Tried sushi? Did you have you?\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+    "importance_score": 0.7999999999999999,
+    "analyzed": true
+  }
+]

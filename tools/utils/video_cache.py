@@ -196,12 +196,12 @@ class VideoCacheManager:
             elif self.validation_method == 'modified_time':
                 cache_entry['modified_time'] = self._get_video_modified_time(video_path)
             
-            # Store file paths
+            # Store file paths (use video-specific filenames)
             metadata_file = os.path.join(self.cache_config['metadata_directory'], f'video_metadata_{cache_key}.json')
             cache_entry['metadata_file'] = metadata_file
-            cache_entry['graph_file'] = os.path.join(self.cache_config['metadata_directory'], 'knowledge_graph.json')
-            cache_entry['frame_analysis_file'] = os.path.join(self.cache_config['metadata_directory'], 'frame_analysis.json')
-            cache_entry['tracking_file'] = os.path.join(self.cache_config['metadata_directory'], 'object_tracking.json')
+            cache_entry['graph_file'] = os.path.join(self.cache_config['metadata_directory'], f'knowledge_graph_{cache_key}.json')
+            cache_entry['frame_analysis_file'] = os.path.join(self.cache_config['metadata_directory'], f'frame_analysis_{cache_key}.json')
+            cache_entry['tracking_file'] = os.path.join(self.cache_config['metadata_directory'], f'object_tracking_{cache_key}.json')
             
             # Save consolidated metadata with cache key
             with open(metadata_file, 'w') as f:

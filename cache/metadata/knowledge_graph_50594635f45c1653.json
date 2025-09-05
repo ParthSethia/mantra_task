@@ -1,0 +1,2666 @@
+{
+  "nodes": {
+    "video_7712": {
+      "node_type": "video",
+      "path": "current_video",
+      "video_duration": 65.0,
+      "total_frames": 66,
+      "important_frames": 65,
+      "transcript_segments": 19,
+      "created_at": "2025-09-05T21:50:32.902023",
+      "duration": 65.0,
+      "total_frames_analyzed": 66,
+      "important_frames_count": 65
+    },
+    "frame_0_0.00s": {
+      "node_type": "frame",
+      "frame_id": 0,
+      "timestamp": 0.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a cupboard and a plant.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000000_0.00s.jpg",
+      "analyzed": true
+    },
+    "frame_1_1.00s": {
+      "node_type": "frame",
+      "frame_id": 1,
+      "timestamp": 1.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. At the top of the image there is text that reads \"Did you?\"'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000001_1.00s.jpg",
+      "analyzed": true
+    },
+    "frame_2_2.00s": {
+      "node_type": "frame",
+      "frame_id": 2,
+      "timestamp": 2.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing a white dress and spectacles. On the table there is a microphone stand and a plant, and in the background there is an object on the shelf and a wall. The text on the image reads \"Did you? Have you?\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000002_2.00s.jpg",
+      "analyzed": true
+    },
+    "frame_3_3.00s": {
+      "node_type": "frame",
+      "frame_id": 3,
+      "timestamp": 3.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with something written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000003_3.00s.jpg",
+      "analyzed": true
+    },
+    "frame_4_4.00s": {
+      "node_type": "frame",
+      "frame_id": 4,
+      "timestamp": 4.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you?\" in Hindi.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000004_4.00s.jpg",
+      "analyzed": true
+    },
+    "frame_5_5.00s": {
+      "node_type": "frame",
+      "frame_id": 5,
+      "timestamp": 5.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you?\" in Hindi.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000005_5.00s.jpg",
+      "analyzed": true
+    },
+    "frame_6_6.00s": {
+      "node_type": "frame",
+      "frame_id": 6,
+      "timestamp": 6.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her and the words \"Did you? Have you?\" written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000006_6.00s.jpg",
+      "analyzed": true
+    },
+    "frame_7_7.00s": {
+      "node_type": "frame",
+      "frame_id": 7,
+      "timestamp": 7.0,
+      "importance_score": 0.95,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you? Past Hindi Actions\".'}\nIMPORTANCE: 0.95\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000007_7.00s.jpg",
+      "analyzed": true
+    },
+    "frame_8_8.00s": {
+      "node_type": "frame",
+      "frame_id": 8,
+      "timestamp": 8.0,
+      "importance_score": 0.8999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you? Have you? Past Hindi Actions\".'}\nIMPORTANCE: 0.90\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000008_8.00s.jpg",
+      "analyzed": true
+    },
+    "frame_9_9.00s": {
+      "node_type": "frame",
+      "frame_id": 9,
+      "timestamp": 9.0,
+      "importance_score": 0.8999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there is an object, and in the background there are house plants and a wall. The text on the image reads \"Did you? Have you? Past Hindi Actions\".'}\nIMPORTANCE: 0.90\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000009_9.00s.jpg",
+      "analyzed": true
+    },
+    "frame_10_10.00s": {
+      "node_type": "frame",
+      "frame_id": 10,
+      "timestamp": 10.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her and the words \"Did you? Have you?\" written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000010_10.00s.jpg",
+      "analyzed": true
+    },
+    "frame_11_11.00s": {
+      "node_type": "frame",
+      "frame_id": 11,
+      "timestamp": 11.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her and the words \"Did you? Have you?\" written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000011_11.00s.jpg",
+      "analyzed": true
+    },
+    "frame_12_12.00s": {
+      "node_type": "frame",
+      "frame_id": 12,
+      "timestamp": 12.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a cupboard and a plant. There is also a watermark on the image.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000012_12.00s.jpg",
+      "analyzed": true
+    },
+    "frame_13_13.00s": {
+      "node_type": "frame",
+      "frame_id": 13,
+      "timestamp": 13.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is an object, and in the background there are plants and a wall. At the top of the image there is text that reads \"Did you? Useple Pie\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000013_13.00s.jpg",
+      "analyzed": true
+    },
+    "frame_14_14.00s": {
+      "node_type": "frame",
+      "frame_id": 14,
+      "timestamp": 14.0,
+      "importance_score": 0.7,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the wall behind her is a poster with the words \"Did you? Used in Simple Past Tense\" written on it.'}\nIMPORTANCE: 0.70\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000014_14.00s.jpg",
+      "analyzed": true
+    },
+    "frame_15_15.00s": {
+      "node_type": "frame",
+      "frame_id": 15,
+      "timestamp": 15.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. Behind her is a wall with a cupboard filled with various items, and the words \"Did you? Used in Simple Past Tense\" are written across the image.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000015_15.00s.jpg",
+      "analyzed": true
+    },
+    "frame_16_16.00s": {
+      "node_type": "frame",
+      "frame_id": 16,
+      "timestamp": 16.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are house plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000016_16.00s.jpg",
+      "analyzed": true
+    },
+    "frame_17_17.00s": {
+      "node_type": "frame",
+      "frame_id": 17,
+      "timestamp": 17.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are house plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000017_17.00s.jpg",
+      "analyzed": true
+    },
+    "frame_18_18.00s": {
+      "node_type": "frame",
+      "frame_id": 18,
+      "timestamp": 18.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are house plants and a wall. At the top of the image there is some text which reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000018_18.00s.jpg",
+      "analyzed": true
+    },
+    "frame_19_19.00s": {
+      "node_type": "frame",
+      "frame_id": 19,
+      "timestamp": 19.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are house plants and a wall. At the top of the image there is some text which reads \"English Grammar in Hindi\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000019_19.00s.jpg",
+      "analyzed": true
+    },
+    "frame_20_20.00s": {
+      "node_type": "frame",
+      "frame_id": 20,
+      "timestamp": 20.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000020_20.00s.jpg",
+      "analyzed": true
+    },
+    "frame_21_21.00s": {
+      "node_type": "frame",
+      "frame_id": 21,
+      "timestamp": 21.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"English Grammar in Hindi\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000021_21.00s.jpg",
+      "analyzed": true
+    },
+    "frame_22_22.00s": {
+      "node_type": "frame",
+      "frame_id": 22,
+      "timestamp": 22.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000022_22.00s.jpg",
+      "analyzed": true
+    },
+    "frame_23_23.00s": {
+      "node_type": "frame",
+      "frame_id": 23,
+      "timestamp": 23.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Did you? Past Hindi Specific Time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000023_23.00s.jpg",
+      "analyzed": true
+    },
+    "frame_24_24.00s": {
+      "node_type": "frame",
+      "frame_id": 24,
+      "timestamp": 24.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her. She is wearing a white dress and a watch, and there is a plant to her left. The background is slightly blurred, giving the image a dreamy feel.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000024_24.00s.jpg",
+      "analyzed": true
+    },
+    "frame_25_25.00s": {
+      "node_type": "frame",
+      "frame_id": 25,
+      "timestamp": 25.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are house plants and a wall. At the top of the image there is some text, suggesting that the woman is in the middle of a video call.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000025_25.00s.jpg",
+      "analyzed": true
+    },
+    "frame_26_26.00s": {
+      "node_type": "frame",
+      "frame_id": 26,
+      "timestamp": 26.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a wall with text that reads \"Did you call him at 5 pm? Specific time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000026_26.00s.jpg",
+      "analyzed": true
+    },
+    "frame_27_27.00s": {
+      "node_type": "frame",
+      "frame_id": 27,
+      "timestamp": 27.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a cupboard and a plant. The text on the image reads \"Did you call him at 5 pm? Specific time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000027_27.00s.jpg",
+      "analyzed": true
+    },
+    "frame_28_28.00s": {
+      "node_type": "frame",
+      "frame_id": 28,
+      "timestamp": 28.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a cupboard and a plant. The text on the image reads \"Did you call him at 5 pm? Specific time\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000028_28.00s.jpg",
+      "analyzed": true
+    },
+    "frame_29_29.00s": {
+      "node_type": "frame",
+      "frame_id": 29,
+      "timestamp": 29.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with something written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000029_29.00s.jpg",
+      "analyzed": true
+    },
+    "frame_30_30.00s": {
+      "node_type": "frame",
+      "frame_id": 30,
+      "timestamp": 30.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text, suggesting that this is a screenshot of a video call.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000030_30.00s.jpg",
+      "analyzed": true
+    },
+    "frame_31_31.00s": {
+      "node_type": "frame",
+      "frame_id": 31,
+      "timestamp": 31.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text, suggesting that the woman is participating in an online English course.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000031_31.00s.jpg",
+      "analyzed": true
+    },
+    "frame_32_32.00s": {
+      "node_type": "frame",
+      "frame_id": 32,
+      "timestamp": 32.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a window and a plant.'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000032_32.00s.jpg",
+      "analyzed": true
+    },
+    "frame_33_33.00s": {
+      "node_type": "frame",
+      "frame_id": 33,
+      "timestamp": 33.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you watch the movie last week? Specific time\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000033_33.00s.jpg",
+      "analyzed": true
+    },
+    "frame_34_34.00s": {
+      "node_type": "frame",
+      "frame_id": 34,
+      "timestamp": 34.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with something written on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000034_34.00s.jpg",
+      "analyzed": true
+    },
+    "frame_35_35.00s": {
+      "node_type": "frame",
+      "frame_id": 35,
+      "timestamp": 35.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you watch the movie last week? Specific time\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000035_35.00s.jpg",
+      "analyzed": true
+    },
+    "frame_36_36.00s": {
+      "node_type": "frame",
+      "frame_id": 36,
+      "timestamp": 36.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Did you watch the movie last week? Specific time\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000036_36.00s.jpg",
+      "analyzed": true
+    },
+    "frame_37_37.00s": {
+      "node_type": "frame",
+      "frame_id": 37,
+      "timestamp": 37.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with text on it.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000037_37.00s.jpg",
+      "analyzed": true
+    },
+    "frame_38_38.00s": {
+      "node_type": "frame",
+      "frame_id": 38,
+      "timestamp": 38.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you? Online English Courses\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000038_38.00s.jpg",
+      "analyzed": true
+    },
+    "frame_39_39.00s": {
+      "node_type": "frame",
+      "frame_id": 39,
+      "timestamp": 39.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you? Used in Present Perfect Tense\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000039_39.00s.jpg",
+      "analyzed": true
+    },
+    "frame_40_40.00s": {
+      "node_type": "frame",
+      "frame_id": 40,
+      "timestamp": 40.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you? Used in Present Perfect Tense\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000040_40.00s.jpg",
+      "analyzed": true
+    },
+    "frame_41_41.00s": {
+      "node_type": "frame",
+      "frame_id": 41,
+      "timestamp": 41.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Hindi Online English Courses\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000041_41.00s.jpg",
+      "analyzed": true
+    },
+    "frame_42_42.00s": {
+      "node_type": "frame",
+      "frame_id": 42,
+      "timestamp": 42.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Hindi Online English Courses\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000042_42.00s.jpg",
+      "analyzed": true
+    },
+    "frame_43_43.00s": {
+      "node_type": "frame",
+      "frame_id": 43,
+      "timestamp": 43.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Hindi Online English Courses\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000043_43.00s.jpg",
+      "analyzed": true
+    },
+    "frame_44_44.00s": {
+      "node_type": "frame",
+      "frame_id": 44,
+      "timestamp": 44.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Hindi Quotes in Hindi\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000044_44.00s.jpg",
+      "analyzed": true
+    },
+    "frame_45_45.00s": {
+      "node_type": "frame",
+      "frame_id": 45,
+      "timestamp": 45.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a plant and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000045_45.00s.jpg",
+      "analyzed": true
+    },
+    "frame_46_46.00s": {
+      "node_type": "frame",
+      "frame_id": 46,
+      "timestamp": 46.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000046_46.00s.jpg",
+      "analyzed": true
+    },
+    "frame_47_47.00s": {
+      "node_type": "frame",
+      "frame_id": 47,
+      "timestamp": 47.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000047_47.00s.jpg",
+      "analyzed": true
+    },
+    "frame_48_48.00s": {
+      "node_type": "frame",
+      "frame_id": 48,
+      "timestamp": 48.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a plant and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000048_48.00s.jpg",
+      "analyzed": true
+    },
+    "frame_49_49.00s": {
+      "node_type": "frame",
+      "frame_id": 49,
+      "timestamp": 49.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there are papers and other objects, and in the background there is a plant and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000049_49.00s.jpg",
+      "analyzed": true
+    },
+    "frame_50_50.00s": {
+      "node_type": "frame",
+      "frame_id": 50,
+      "timestamp": 50.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is some text which reads \"Learn English in Hindi Online\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000050_50.00s.jpg",
+      "analyzed": true
+    },
+    "frame_51_51.00s": {
+      "node_type": "frame",
+      "frame_id": 51,
+      "timestamp": 51.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a plant and a cupboard.'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000051_51.00s.jpg",
+      "analyzed": true
+    },
+    "frame_52_52.00s": {
+      "node_type": "frame",
+      "frame_id": 52,
+      "timestamp": 52.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000052_52.00s.jpg",
+      "analyzed": true
+    },
+    "frame_53_53.00s": {
+      "node_type": "frame",
+      "frame_id": 53,
+      "timestamp": 53.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there are plants and a wall. At the top of the image, there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000053_53.00s.jpg",
+      "analyzed": true
+    },
+    "frame_54_54.00s": {
+      "node_type": "frame",
+      "frame_id": 54,
+      "timestamp": 54.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000054_54.00s.jpg",
+      "analyzed": true
+    },
+    "frame_55_55.00s": {
+      "node_type": "frame",
+      "frame_id": 55,
+      "timestamp": 55.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a paper and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you written the email?\"'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000055_55.00s.jpg",
+      "analyzed": true
+    },
+    "frame_56_56.00s": {
+      "node_type": "frame",
+      "frame_id": 56,
+      "timestamp": 56.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is a book and a pen, and in the background there are plants and a wall. At the top of the image there is text that reads \"Have you written the email? Hindi\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000056_56.00s.jpg",
+      "analyzed": true
+    },
+    "frame_57_57.00s": {
+      "node_type": "frame",
+      "frame_id": 57,
+      "timestamp": 57.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000057_57.00s.jpg",
+      "analyzed": true
+    },
+    "frame_58_58.00s": {
+      "node_type": "frame",
+      "frame_id": 58,
+      "timestamp": 58.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing spectacles and a watch. On the table there is an object, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000058_58.00s.jpg",
+      "analyzed": true
+    },
+    "frame_59_59.00s": {
+      "node_type": "frame",
+      "frame_id": 59,
+      "timestamp": 59.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other objects, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000059_59.00s.jpg",
+      "analyzed": true
+    },
+    "frame_60_60.00s": {
+      "node_type": "frame",
+      "frame_id": 60,
+      "timestamp": 60.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a window and a plant. At the top of the image there is text that reads \"Have you ever visited God?\"'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000060_60.00s.jpg",
+      "analyzed": true
+    },
+    "frame_61_61.00s": {
+      "node_type": "frame",
+      "frame_id": 61,
+      "timestamp": 61.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there is a book and a pen, and in the background there are plants and a wall. The text on the image reads \"Have you ever visited God? Life experience in Hindi\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000061_61.00s.jpg",
+      "analyzed": true
+    },
+    "frame_62_62.00s": {
+      "node_type": "frame",
+      "frame_id": 62,
+      "timestamp": 62.0,
+      "importance_score": 0.6,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing a white t-shirt with the words \"Have you ever visited Goa? Life Experience\" written on it, suggesting that she is taking an online English course.'}\nIMPORTANCE: 0.60\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000062_62.00s.jpg",
+      "analyzed": true
+    },
+    "frame_63_63.00s": {
+      "node_type": "frame",
+      "frame_id": 63,
+      "timestamp": 63.0,
+      "importance_score": 0.85,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at a table with a microphone in front of her. On the table there are papers and other items, and in the background there is a wall with a window and a plant. The text on the image reads \"Tried sushi? Did you have you?\".'}\nIMPORTANCE: 0.85\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000063_63.00s.jpg",
+      "analyzed": true
+    },
+    "frame_64_64.00s": {
+      "node_type": "frame",
+      "frame_id": 64,
+      "timestamp": 64.0,
+      "importance_score": 0.7,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, surrounded by plants and a wall in the background. She appears to be in the middle of an online English course, as indicated by the text at the top of the image.'}\nIMPORTANCE: 0.70\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000064_64.00s.jpg",
+      "analyzed": true
+    },
+    "frame_65_65.00s": {
+      "node_type": "frame",
+      "frame_id": 65,
+      "timestamp": 65.0,
+      "importance_score": 0.7999999999999999,
+      "analysis": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in front of her, wearing a white dress and spectacles. On the table there is a paper and a microphone stand, and in the background there are plants and a wall. The text on the image reads \"Tried sushi? Did you have you?\".'}\nIMPORTANCE: 0.80\nDETAILS: Frame analyzed using florence2 model",
+      "frame_path": "cache/frames/frame_000065_65.00s.jpg",
+      "analyzed": true
+    },
+    "transcript_0.00_2.00": {
+      "node_type": "transcript_segment",
+      "start_time": 0.0,
+      "end_time": 2.0,
+      "text": "Did you or have you.",
+      "segment_duration": 2.0
+    },
+    "transcript_2.00_4.00": {
+      "node_type": "transcript_segment",
+      "start_time": 2.0,
+      "end_time": 4.0,
+      "text": "dono ka matlab hota hai, kya tum ne?",
+      "segment_duration": 2.0
+    },
+    "transcript_4.00_8.00": {
+      "node_type": "transcript_segment",
+      "start_time": 4.0,
+      "end_time": 8.0,
+      "text": "dono past ki actions poochne ke liye use hote hai.",
+      "segment_duration": 4.0
+    },
+    "transcript_8.00_11.00": {
+      "node_type": "transcript_segment",
+      "start_time": 8.0,
+      "end_time": 11.0,
+      "text": "lekin inka use alag hai.",
+      "segment_duration": 3.0
+    },
+    "transcript_11.00_14.00": {
+      "node_type": "transcript_segment",
+      "start_time": 11.0,
+      "end_time": 14.0,
+      "text": "Did you. ye simple past tense me use hota hai.",
+      "segment_duration": 3.0
+    },
+    "transcript_14.00_22.00": {
+      "node_type": "transcript_segment",
+      "start_time": 14.0,
+      "end_time": 22.0,
+      "text": "jab aap past ka specific time ya khatam ho chuki ghatna ke baare mein baat kar rahe ho tab Did you use hota hai.",
+      "segment_duration": 8.0
+    },
+    "transcript_22.00_26.00": {
+      "node_type": "transcript_segment",
+      "start_time": 22.0,
+      "end_time": 26.0,
+      "text": "jaise, Did you call him at 5 PM?",
+      "segment_duration": 4.0
+    },
+    "transcript_26.00_32.00": {
+      "node_type": "transcript_segment",
+      "start_time": 26.0,
+      "end_time": 32.0,
+      "text": "agar hum 5 PM nahi bhi lagaye, toh bhi puchne wale ko pata hai, 5 baje call karna tha.",
+      "segment_duration": 6.0
+    },
+    "transcript_32.00_34.00": {
+      "node_type": "transcript_segment",
+      "start_time": 32.0,
+      "end_time": 34.0,
+      "text": "Did you watch the movie?",
+      "segment_duration": 2.0
+    },
+    "transcript_34.00_36.00": {
+      "node_type": "transcript_segment",
+      "start_time": 34.0,
+      "end_time": 36.0,
+      "text": "shayad last week ki baat ho rahi hai.",
+      "segment_duration": 2.0
+    },
+    "transcript_36.00_40.00": {
+      "node_type": "transcript_segment",
+      "start_time": 36.0,
+      "end_time": 40.0,
+      "text": "Ab Have you. Have you present perfect tense me use hota hai.",
+      "segment_duration": 4.0
+    },
+    "transcript_40.00_43.00": {
+      "node_type": "transcript_segment",
+      "start_time": 40.0,
+      "end_time": 43.0,
+      "text": "matlab, ab tak hua ya nahi?",
+      "segment_duration": 3.0
+    },
+    "transcript_43.00_51.00": {
+      "node_type": "transcript_segment",
+      "start_time": 43.0,
+      "end_time": 51.0,
+      "text": "Have you ab tak ke experience ya koi kaam abhi tak complete hua ya nahi hua hai, yeh janne ke liye use hota hai.",
+      "segment_duration": 8.0
+    },
+    "transcript_51.00_52.00": {
+      "node_type": "transcript_segment",
+      "start_time": 51.0,
+      "end_time": 52.0,
+      "text": "Have you written the email?",
+      "segment_duration": 1.0
+    },
+    "transcript_52.00_56.00": {
+      "node_type": "transcript_segment",
+      "start_time": 52.0,
+      "end_time": 56.0,
+      "text": "aap puchh rahe ho kaam abhi tak complete hua ya nahi?",
+      "segment_duration": 4.0
+    },
+    "transcript_56.00_58.00": {
+      "node_type": "transcript_segment",
+      "start_time": 56.0,
+      "end_time": 58.0,
+      "text": "Have you ever visited Goa?",
+      "segment_duration": 2.0
+    },
+    "transcript_58.00_62.00": {
+      "node_type": "transcript_segment",
+      "start_time": 58.0,
+      "end_time": 62.0,
+      "text": "yahan par hum kisi ke life experience ke baare mein puchh rahe hai.",
+      "segment_duration": 4.0
+    },
+    "transcript_62.00_63.00": {
+      "node_type": "transcript_segment",
+      "start_time": 62.0,
+      "end_time": 63.0,
+      "text": "is sentence mein kya aayega?",
+      "segment_duration": 1.0
+    },
+    "transcript_63.00_65.00": {
+      "node_type": "transcript_segment",
+      "start_time": 63.0,
+      "end_time": 65.0,
+      "text": "mujhe comments me likhkar zarur batana.",
+      "segment_duration": 2.0
+    }
+  },
+  "edges": [
+    [
+      "video_7712",
+      "frame_0_0.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_1_1.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_2_2.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_3_3.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_4_4.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_5_5.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_6_6.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_7_7.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_8_8.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_9_9.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_10_10.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_11_11.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_12_12.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_13_13.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_14_14.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_15_15.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_16_16.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_17_17.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_18_18.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_19_19.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_20_20.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_21_21.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_22_22.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_23_23.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_24_24.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_25_25.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_26_26.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_27_27.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_28_28.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_29_29.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_30_30.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_31_31.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_32_32.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_33_33.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_34_34.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_35_35.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_36_36.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_37_37.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_38_38.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_39_39.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_40_40.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_41_41.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_42_42.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_43_43.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_44_44.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_45_45.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_46_46.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_47_47.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_48_48.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_49_49.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_50_50.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_51_51.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_52_52.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_53_53.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_54_54.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_55_55.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_56_56.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_57_57.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_58_58.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_59_59.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_60_60.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_61_61.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_62_62.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_63_63.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_64_64.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "frame_65_65.00s",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_0.00_2.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_2.00_4.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_8.00_11.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_11.00_14.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_32.00_34.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_34.00_36.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_40.00_43.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_51.00_52.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_56.00_58.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_62.00_63.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "video_7712",
+      "transcript_63.00_65.00",
+      {
+        "relationship": "contains"
+      }
+    ],
+    [
+      "frame_0_0.00s",
+      "frame_1_1.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_0_0.00s",
+      "transcript_0.00_2.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_1_1.00s",
+      "frame_2_2.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_1_1.00s",
+      "transcript_0.00_2.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_2_2.00s",
+      "frame_3_3.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_2_2.00s",
+      "transcript_0.00_2.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_2_2.00s",
+      "transcript_2.00_4.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_3_3.00s",
+      "frame_4_4.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_3_3.00s",
+      "transcript_2.00_4.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_4_4.00s",
+      "frame_5_5.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_4_4.00s",
+      "transcript_2.00_4.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_4_4.00s",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_5_5.00s",
+      "frame_6_6.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_5_5.00s",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_6_6.00s",
+      "frame_7_7.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_6_6.00s",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_7_7.00s",
+      "frame_8_8.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_7_7.00s",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_8_8.00s",
+      "frame_9_9.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_8_8.00s",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_8_8.00s",
+      "transcript_8.00_11.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_9_9.00s",
+      "frame_10_10.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_9_9.00s",
+      "transcript_8.00_11.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_10_10.00s",
+      "frame_11_11.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_10_10.00s",
+      "transcript_8.00_11.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_11_11.00s",
+      "frame_12_12.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_11_11.00s",
+      "transcript_8.00_11.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_11_11.00s",
+      "transcript_11.00_14.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_12_12.00s",
+      "frame_13_13.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_12_12.00s",
+      "transcript_11.00_14.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_13_13.00s",
+      "frame_14_14.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_13_13.00s",
+      "transcript_11.00_14.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_14_14.00s",
+      "frame_15_15.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_14_14.00s",
+      "transcript_11.00_14.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_14_14.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_15_15.00s",
+      "frame_16_16.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_15_15.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.625
+      }
+    ],
+    [
+      "frame_16_16.00s",
+      "frame_17_17.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_16_16.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_17_17.00s",
+      "frame_18_18.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_17_17.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.875
+      }
+    ],
+    [
+      "frame_18_18.00s",
+      "frame_19_19.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_18_18.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_19_19.00s",
+      "frame_20_20.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_19_19.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.875
+      }
+    ],
+    [
+      "frame_20_20.00s",
+      "frame_21_21.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_20_20.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_21_21.00s",
+      "frame_22_22.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_21_21.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.625
+      }
+    ],
+    [
+      "frame_22_22.00s",
+      "frame_23_23.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_22_22.00s",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_22_22.00s",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_23_23.00s",
+      "frame_24_24.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_23_23.00s",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_24_24.00s",
+      "frame_25_25.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_24_24.00s",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_25_25.00s",
+      "frame_26_26.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_25_25.00s",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_26_26.00s",
+      "frame_27_27.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_26_26.00s",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_26_26.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_27_27.00s",
+      "frame_28_28.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_27_27.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.6666666666666667
+      }
+    ],
+    [
+      "frame_28_28.00s",
+      "frame_29_29.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_28_28.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_29_29.00s",
+      "frame_30_30.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_29_29.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_30_30.00s",
+      "frame_31_31.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_30_30.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_31_31.00s",
+      "frame_32_32.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_31_31.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.6666666666666667
+      }
+    ],
+    [
+      "frame_32_32.00s",
+      "frame_33_33.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_32_32.00s",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_32_32.00s",
+      "transcript_32.00_34.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_33_33.00s",
+      "frame_34_34.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_33_33.00s",
+      "transcript_32.00_34.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_34_34.00s",
+      "frame_35_35.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_34_34.00s",
+      "transcript_32.00_34.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_34_34.00s",
+      "transcript_34.00_36.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_35_35.00s",
+      "frame_36_36.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_35_35.00s",
+      "transcript_34.00_36.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_36_36.00s",
+      "frame_37_37.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_36_36.00s",
+      "transcript_34.00_36.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_36_36.00s",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_37_37.00s",
+      "frame_38_38.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_37_37.00s",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_38_38.00s",
+      "frame_39_39.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_38_38.00s",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_39_39.00s",
+      "frame_40_40.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_39_39.00s",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_40_40.00s",
+      "frame_41_41.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_40_40.00s",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_40_40.00s",
+      "transcript_40.00_43.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_41_41.00s",
+      "frame_42_42.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_41_41.00s",
+      "transcript_40.00_43.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_42_42.00s",
+      "frame_43_43.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_42_42.00s",
+      "transcript_40.00_43.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.8333333333333334
+      }
+    ],
+    [
+      "frame_43_43.00s",
+      "frame_44_44.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_43_43.00s",
+      "transcript_40.00_43.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_43_43.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_44_44.00s",
+      "frame_45_45.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_44_44.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.625
+      }
+    ],
+    [
+      "frame_45_45.00s",
+      "frame_46_46.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_45_45.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_46_46.00s",
+      "frame_47_47.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_46_46.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.875
+      }
+    ],
+    [
+      "frame_47_47.00s",
+      "frame_48_48.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_47_47.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_48_48.00s",
+      "frame_49_49.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_48_48.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.875
+      }
+    ],
+    [
+      "frame_49_49.00s",
+      "frame_50_50.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_49_49.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_50_50.00s",
+      "frame_51_51.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_50_50.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.625
+      }
+    ],
+    [
+      "frame_51_51.00s",
+      "frame_52_52.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_51_51.00s",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_51_51.00s",
+      "transcript_51.00_52.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_52_52.00s",
+      "frame_53_53.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_52_52.00s",
+      "transcript_51.00_52.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_52_52.00s",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_53_53.00s",
+      "frame_54_54.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_53_53.00s",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_54_54.00s",
+      "frame_55_55.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_54_54.00s",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_55_55.00s",
+      "frame_56_56.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_55_55.00s",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_56_56.00s",
+      "frame_57_57.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_56_56.00s",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_56_56.00s",
+      "transcript_56.00_58.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_57_57.00s",
+      "frame_58_58.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_57_57.00s",
+      "transcript_56.00_58.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_58_58.00s",
+      "frame_59_59.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_58_58.00s",
+      "transcript_56.00_58.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_58_58.00s",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_59_59.00s",
+      "frame_60_60.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_59_59.00s",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_60_60.00s",
+      "frame_61_61.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_60_60.00s",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_61_61.00s",
+      "frame_62_62.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_61_61.00s",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.75
+      }
+    ],
+    [
+      "frame_62_62.00s",
+      "frame_63_63.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_62_62.00s",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_62_62.00s",
+      "transcript_62.00_63.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_63_63.00s",
+      "frame_64_64.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_63_63.00s",
+      "transcript_62.00_63.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_63_63.00s",
+      "transcript_63.00_65.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "frame_64_64.00s",
+      "frame_65_65.00s",
+      {
+        "relationship": "temporal_next",
+        "time_gap": 1.0
+      }
+    ],
+    [
+      "frame_64_64.00s",
+      "transcript_63.00_65.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 1.0
+      }
+    ],
+    [
+      "frame_65_65.00s",
+      "transcript_63.00_65.00",
+      {
+        "relationship": "aligns_with",
+        "alignment_strength": 0.5
+      }
+    ],
+    [
+      "transcript_0.00_2.00",
+      "transcript_2.00_4.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_2.00_4.00",
+      "transcript_4.00_8.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_4.00_8.00",
+      "transcript_8.00_11.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_8.00_11.00",
+      "transcript_11.00_14.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_11.00_14.00",
+      "transcript_14.00_22.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_14.00_22.00",
+      "transcript_22.00_26.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_22.00_26.00",
+      "transcript_26.00_32.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_26.00_32.00",
+      "transcript_32.00_34.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_32.00_34.00",
+      "transcript_34.00_36.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_34.00_36.00",
+      "transcript_36.00_40.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_36.00_40.00",
+      "transcript_40.00_43.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_40.00_43.00",
+      "transcript_43.00_51.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_43.00_51.00",
+      "transcript_51.00_52.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_51.00_52.00",
+      "transcript_52.00_56.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_52.00_56.00",
+      "transcript_56.00_58.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_56.00_58.00",
+      "transcript_58.00_62.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_58.00_62.00",
+      "transcript_62.00_63.00",
+      {
+        "relationship": "follows"
+      }
+    ],
+    [
+      "transcript_62.00_63.00",
+      "transcript_63.00_65.00",
+      {
+        "relationship": "follows"
+      }
+    ]
+  ],
+  "video_id": "video_7712",
+  "config": {
+    "enabled": true,
+    "type": "networkx",
+    "neo4j_uri": "bolt://localhost:7687",
+    "neo4j_user": "neo4j",
+    "neo4j_password": "password"
+  }
+}

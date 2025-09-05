@@ -1,7 +1,7 @@
 {
   "50594635f45c1653": {
     "video_path": "/private/var/folders/b5/5hj2gt3168l_xdn56bdxddfc0000gn/T/gradio/3f6328dc79722dee24ecefc52f06db9b51313f278766fa8bcb241dfe3e44cf3a/test_sample5.mp4",
-    "processed_at": "2025-09-05T20:40:43.915791",
+    "processed_at": "2025-09-05T22:05:24.147721",
     "processing_results": {
       "video_path": "/private/var/folders/b5/5hj2gt3168l_xdn56bdxddfc0000gn/T/gradio/3f6328dc79722dee24ecefc52f06db9b51313f278766fa8bcb241dfe3e44cf3a/test_sample5.mp4",
       "processing_status": "completed",
@@ -13,33 +13,33 @@
         "transcript": {
           "status": "completed",
           "output_path": "cache/transcript.txt",
-          "segments_count": 22
+          "segments_count": 19
         },
         "frames": {
           "status": "completed",
           "total_frames": 66,
           "important_frames": 66,
-          "analysis_file": "cache/metadata/frame_analysis.json"
+          "analysis_file": "cache/metadata/frame_analysis_50594635f45c1653.json"
         },
         "tracking": {
           "status": "completed",
           "tracks_found": 0,
-          "tracking_file": "cache/metadata/object_tracking.json"
+          "tracking_file": "cache/metadata/object_tracking_50594635f45c1653.json"
         },
         "graph": {
           "status": "completed",
-          "graph_file": "cache/metadata/knowledge_graph.json"
+          "graph_file": "cache/metadata/knowledge_graph_50594635f45c1653.json"
         },
         "metadata": {
           "status": "completed",
-          "output_path": "cache/metadata/video_metadata.json"
+          "output_path": "cache/metadata/video_metadata_50594635f45c1653.json"
         }
       },
       "summary": {
-        "duration": "1:06",
+        "duration": "1:05",
         "total_frames_processed": 66,
         "important_frames_found": 66,
-        "transcript_segments": 22,
+        "transcript_segments": 19,
         "top_moments": [
           {
             "timestamp": 7.0,
@@ -73,8 +73,8 @@
     "cache_key": "50594635f45c1653",
     "checksum": "86453b531be1f451093a4932277b8d78",
     "metadata_file": "cache/metadata/video_metadata_50594635f45c1653.json",
-    "graph_file": "cache/metadata/knowledge_graph.json",
-    "frame_analysis_file": "cache/metadata/frame_analysis.json",
-    "tracking_file": "cache/metadata/object_tracking.json"
+    "graph_file": "cache/metadata/knowledge_graph_50594635f45c1653.json",
+    "frame_analysis_file": "cache/metadata/frame_analysis_50594635f45c1653.json",
+    "tracking_file": "cache/metadata/object_tracking_50594635f45c1653.json"
   }
 }

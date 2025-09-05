@@ -590,6 +590,22 @@ And so on for each frame..."""
     def process_video_frames(self, video_path: str) -> List[Dict]:
         print(f"Processing frames from video: {video_path}")
         
+        # Generate video ID for video-specific caching
+        from create_video_transcript import get_video_id
+        video_id = get_video_id(video_path)
+        
+        # Check if we have cached frame analysis for this specific video
+        metadata_file = os.path.join(self.cache_config['metadata_directory'], f'frame_analysis_{video_id}.json')
+        if os.path.exists(metadata_file):
+            print(f"Found existing frame analysis for video {video_id}, loading from cache...")
+            try:
+                with open(metadata_file, 'r') as f:
+                    cached_frames = json.load(f)
+                print(f"Loaded {len(cached_frames)} analyzed frames from cache")
+                return cached_frames
+            except (json.JSONDecodeError, IOError) as e:
+                print(f"Error loading cached frame analysis: {e}, reprocessing...")
+        
         # Extract frames
         frames_data = self.extract_frames(video_path)
         
@@ -610,8 +626,7 @@ And so on for each frame..."""
             batch_results = self.analyze_frames_batch(frames_batch)
             analyzed_frames.extend(batch_results)
         
-        # Save metadata
-        metadata_file = os.path.join(self.cache_config['metadata_directory'], 'frame_analysis.json')
+        # Save metadata with video-specific filename
         with open(metadata_file, 'w') as f:
             # Remove PIL image object for JSON serialization
             serializable_data = []

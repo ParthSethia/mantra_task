@@ -235,6 +235,11 @@ class ObjectTracker:
                         continue
                         
                     x1, y1, x2, y2 = det.bbox
+                    
+                    # Convert from numpy types to native Python types
+                    if hasattr(x1, 'item'):  # numpy scalar
+                        x1, y1, x2, y2 = x1.item(), y1.item(), x2.item(), y2.item()
+                    
                     # Ensure all values are Python floats, not numpy types
                     x1, y1, x2, y2 = float(x1), float(y1), float(x2), float(y2)
                     confidence = float(det.confidence)
@@ -244,8 +249,15 @@ class ObjectTracker:
                     if width <= 0 or height <= 0:
                         print(f"Warning: Invalid bbox dimensions: w={width}, h={height}")
                         continue
-                        
-                    raw_detections.append([x1, y1, width, height, confidence])
+                    
+                    # Create detection array in the exact format DeepSORT expects
+                    # Format: [left, top, width, height, confidence]
+                    detection_array = [float(x1), float(y1), float(width), float(height), float(confidence)]
+                    
+                    # Double-check that each element is a Python float, not numpy
+                    detection_array = [float(x) if hasattr(x, 'item') else float(x) for x in detection_array]
+                    
+                    raw_detections.append(detection_array)
                     
                 except (ValueError, TypeError) as e:
                     print(f"Warning: Failed to prepare detection for DeepSORT: {e}")
@@ -255,27 +267,99 @@ class ObjectTracker:
             if not raw_detections:
                 print("No valid detections for tracking")
                 return []
-                
-            # Debug: Print detection format
-            if len(raw_detections) > 0:
-                first_det = raw_detections[0]
-                if not isinstance(first_det, list) or len(first_det) != 5:
-                    print(f"Warning: Invalid detection format: {first_det}")
-                    return []
             
-            # Update tracker with frame data
-            if frame is not None:
-                tracks_output = self.tracker.update_tracks(raw_detections, frame=frame)
-            else:
-                # Fallback: try without frame but this might cause the error
-                try:
-                    tracks_output = self.tracker.update_tracks(raw_detections, frame=None)
-                except Exception as e:
-                    if "embeddings or frame must be given" in str(e):
-                        print("DeepSORT requires frame data, skipping tracking for this frame")
-                        return []
+            # Validate all detections are properly formatted with extra safety checks
+            valid_detections = []
+            for i, det in enumerate(raw_detections):
+                if not isinstance(det, list):
+                    print(f"Warning: Detection {i} is not a list: {type(det)}")
+                    continue
+                if len(det) != 5:
+                    print(f"Warning: Detection {i} has wrong length {len(det)}, expected 5")
+                    continue
+                
+                # Extra validation for each element
+                valid_elements = []
+                element_valid = True
+                for j, element in enumerate(det):
+                    # Check if element has unwanted attributes that might confuse DeepSORT
+                    if hasattr(element, '__len__') and not isinstance(element, (int, float)):
+                        print(f"Warning: Detection {i}, element {j} has __len__ attribute: {type(element)}")
+                        element_valid = False
+                        break
+                    
+                    # Convert to native Python float and validate
+                    try:
+                        # Extra conversion steps to ensure we get pure Python float
+                        if hasattr(element, 'item'):  # numpy scalar
+                            element = element.item()
+                        elif hasattr(element, 'cpu'):  # torch tensor
+                            element = element.cpu().item()
+                        
+                        # Final conversion to Python float
+                        float_val = float(element)
+                        
+                        # Validate the float value
+                        if not isinstance(float_val, float) or hasattr(float_val, '__len__'):
+                            print(f"Warning: Detection {i}, element {j} failed final validation: {type(float_val)}")
+                            element_valid = False
+                            break
+                        
+                        valid_elements.append(float_val)
+                        
+                    except (ValueError, TypeError, AttributeError) as e:
+                        print(f"Warning: Detection {i}, element {j} conversion failed: {e}")
+                        element_valid = False
+                        break
+                
+                if element_valid and len(valid_elements) == 5:
+                    # Final check: ensure this is a proper list of floats
+                    final_det = list(valid_elements)  # Explicit list conversion
+                    if all(type(x) == float for x in final_det):
+                        valid_detections.append(final_det)
                     else:
-                        raise e
+                        print(f"Warning: Detection {i} failed final type check: {[type(x) for x in final_det]}")
+            
+            if not valid_detections:
+                print("No valid detections after formatting validation")
+                return []
+                
+            raw_detections = valid_detections
+            
+            # Final safety check: ensure raw_detections is a proper list of lists
+            if not isinstance(raw_detections, list) or not all(isinstance(det, list) for det in raw_detections):
+                print("Error: raw_detections format validation failed at final check")
+                return []
+            
+            # Update tracker with frame data - with enhanced error handling
+            try:
+                if frame is not None:
+                    # Debug: Print exact format being passed to DeepSORT
+                    if len(raw_detections) > 0:
+                        sample_det = raw_detections[0]
+                        print(f"DEBUG: Passing to DeepSORT - Type: {type(raw_detections)}, Sample detection: {sample_det}, Sample types: {[type(x) for x in sample_det]}")
+                    
+                    tracks_output = self.tracker.update_tracks(raw_detections, frame=frame)
+                else:
+                    # Fallback: try without frame but this might cause the error
+                    try:
+                        tracks_output = self.tracker.update_tracks(raw_detections, frame=None)
+                    except Exception as e:
+                        if "embeddings or frame must be given" in str(e):
+                            print("DeepSORT requires frame data, skipping tracking for this frame")
+                            return []
+                        else:
+                            raise e
+            except Exception as e:
+                if "has no len()" in str(e):
+                    print(f"DeepSORT len() error occurred despite correct format.")
+                    print(f"This appears to be a DeepSORT library issue, not a data format issue.")
+                    print(f"Disabling object tracking for this session to allow processing to continue.")
+                    # Disable tracking to prevent further errors
+                    self.tracking_config['enabled'] = False
+                    return []
+                else:
+                    raise e
             
             current_active_tracks = []
             

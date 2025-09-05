@@ -1,0 +1,25 @@
+{
+  "config": {
+    "enabled": true,
+    "detection_model": "yolov8",
+    "model_size": "s",
+    "confidence_threshold": 0.5,
+    "tracking_algorithm": "deepsort",
+    "max_tracks_per_frame": 50,
+    "track_classes": [
+      "person",
+      "car",
+      "truck",
+      "bus",
+      "bicycle",
+      "motorbike"
+    ]
+  },
+  "summary": {
+    "total_tracks": 0,
+    "active_tracks": 0,
+    "track_classes": {},
+    "tracks_detail": []
+  },
+  "tracks": {}
+}

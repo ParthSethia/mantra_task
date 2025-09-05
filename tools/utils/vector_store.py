@@ -9,9 +9,15 @@ class VideoVectorStore:
         
         self.vector_config = config['vector_store']
         
+        # Configure Milvus to avoid async event loop issues
+        connection_args = {
+            "uri": self.vector_config['uri'],
+            "prefer_grpc": False,  # Use HTTP instead of gRPC to avoid async issues
+        }
+        
         self.vector_store = Milvus(
             embedding_function=embeddings,
-            connection_args={"uri": self.vector_config['uri']},
+            connection_args=connection_args,
             index_params={
                 "index_type": self.vector_config['index_type'], 
                 "metric_type": self.vector_config['metric_type']
@@ -89,30 +95,68 @@ class VideoVectorStore:
     
     def add_transcript_segments(self, transcript_segments):
         """Add transcript segments to vector store"""
+        print(f"DEBUG: Starting to add {len(transcript_segments)} transcript segments to vector store")
+        
+        if not transcript_segments:
+            print("DEBUG: No transcript segments to add")
+            return
+        
         texts = []
         metadatas = []
         
-        for segment in transcript_segments:
+        for i, segment in enumerate(transcript_segments):
+            print(f"DEBUG: Processing segment {i}: {segment.get('text', 'NO_TEXT')[:50]}...")
+            
+            # Validate segment structure
+            if 'text' not in segment:
+                print(f"DEBUG: Segment {i} missing 'text' field, skipping")
+                continue
+            if 'start' not in segment or 'end' not in segment:
+                print(f"DEBUG: Segment {i} missing start/end times, skipping")
+                continue
+            
             # Clean transcript text
             cleaned_text = self._clean_text_for_vector_store(segment['text'], max_length=4000)
+            print(f"DEBUG: Cleaned text for segment {i}: '{cleaned_text[:50]}...'")
+            
             texts.append(cleaned_text)
             metadatas.append({
+                'frame_id': -1,  # Use -1 to indicate this is transcript data, not frame data
+                'timestamp': segment['start'],  # Use start time as primary timestamp
                 'start_time': segment['start'],
                 'end_time': segment['end'],
+                'importance_score': 0.8,  # Default importance for transcript segments
+                'frame_path': '',  # Empty path for transcript data
                 'type': 'transcript_segment'
             })
         
+        print(f"DEBUG: Prepared {len(texts)} transcript texts and {len(metadatas)} metadata entries for insertion")
+        
+        if not texts:
+            print("DEBUG: No valid transcript texts to insert")
+            return
+        
         try:
+            print("DEBUG: Attempting to add transcript segments to vector store...")
             self.vector_store.add_texts(texts=texts, metadatas=metadatas)
+            print(f"DEBUG: Successfully added {len(texts)} transcript segments to vector store")
         except Exception as e:
-            print(f"Failed to add transcript segments to vector store: {e}")
+            print(f"DEBUG: Failed to add transcript segments to vector store: {e}")
+            print(f"DEBUG: Attempting individual insertion to identify problematic entries...")
+            
             # Try adding one by one to identify problematic entries
+            successful_insertions = 0
             for i, (text, metadata) in enumerate(zip(texts, metadatas)):
                 try:
                     self.vector_store.add_texts(texts=[text], metadatas=[metadata])
+                    successful_insertions += 1
+                    print(f"DEBUG: Successfully inserted transcript segment {i}")
                 except Exception as single_error:
-                    print(f"Failed to add transcript segment {i}: {single_error}")
-                    print(f"Problematic text: {text[:200]}...")
+                    print(f"DEBUG: Failed to add transcript segment {i}: {single_error}")
+                    print(f"DEBUG: Problematic text: {text[:200]}...")
+                    print(f"DEBUG: Problematic metadata: {metadata}")
+            
+            print(f"DEBUG: Individual insertion complete. {successful_insertions}/{len(texts)} segments inserted successfully")
     
     def search_by_query(self, query: str, k: int = 5):
         """Search for relevant content by query"""

@@ -340,53 +340,216 @@ class VideoGraphStore:
         return self.find_objects_in_timerange(start_time, end_time)
     
     def query_temporal_relationships(self, query: str) -> Dict:
-        """Process natural language temporal queries"""
+        """Process natural language temporal queries using LLM for intelligent parsing"""
+        return self._parse_temporal_query_with_llm(query)
+    
+    def _parse_temporal_query_with_llm(self, query: str) -> Dict:
+        """Use LLM to intelligently parse temporal queries"""
+        try:
+            # Import LLM - using the same one from enhanced_chatbot if available
+            from langchain_ollama import ChatOllama
+            from langchain_core.messages import HumanMessage
+            import yaml
+            import re
+            
+            # Load config to get LLM settings
+            with open("config.yaml", 'r') as f:
+                config = yaml.safe_load(f)
+            
+            vlm_config = config.get('vlm', {})
+            llm = ChatOllama(
+                model=vlm_config.get('model_name', 'llama3.2-vision'),
+                temperature=0.1  # Low temperature for consistent parsing
+            )
+            
+            parsing_prompt = f"""Parse this temporal query and extract the key information. Return a JSON response with the following structure:
+
+Query: "{query}"
+
+Analyze the query and return JSON in this exact format:
+{{
+    "query_type": "before|after|at|around|co_occurring|general",
+    "timestamp_seconds": <number or null>,
+    "time_reference": "<extracted time reference>",
+    "intent": "<what the user is asking for>",
+    "keywords": ["<relevant keywords>"]
+}}
+
+Time parsing examples:
+- "2:30" or "2 minutes 30 seconds" → 150 seconds
+- "30 seconds" or "0:30" → 30 seconds  
+- "1 minute" or "1:00" → 60 seconds
+- "at 45 seconds" → 45 seconds
+
+Query types:
+- "before" = events before a timestamp
+- "after" = events after a timestamp  
+- "at"/"around" = events at/near a specific time
+- "co_occurring" = objects/events at same time
+- "general" = general temporal question
+
+Examples:
+- "what happened at 30 seconds" → {{"query_type": "at", "timestamp_seconds": 30}}
+- "show events before 2 minutes" → {{"query_type": "before", "timestamp_seconds": 120}}
+- "what was happening around 1:30" → {{"query_type": "around", "timestamp_seconds": 90}}
+- "objects at same time as 45 seconds" → {{"query_type": "co_occurring", "timestamp_seconds": 45}}
+
+Return ONLY the JSON, no other text."""
+
+            response = llm.invoke([HumanMessage(content=parsing_prompt)])
+            
+            # Parse LLM response
+            import json
+            try:
+                # Extract JSON from response
+                response_text = response.content.strip()
+                # Try to find JSON in the response
+                json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
+                if json_match:
+                    parsed_query = json.loads(json_match.group())
+                else:
+                    # Fallback: try parsing entire response as JSON
+                    parsed_query = json.loads(response_text)
+                
+                # Execute the parsed query
+                return self._execute_parsed_temporal_query(parsed_query, query)
+                
+            except json.JSONDecodeError as e:
+                print(f"Failed to parse LLM response as JSON: {e}")
+                print(f"LLM response was: {response.content}")
+                return self._fallback_temporal_parsing(query)
+                
+        except Exception as e:
+            print(f"LLM temporal parsing failed: {e}")
+            return self._fallback_temporal_parsing(query)
+    
+    def _execute_parsed_temporal_query(self, parsed_query: Dict, original_query: str) -> Dict:
+        """Execute the temporal query based on LLM parsing results"""
+        query_type = parsed_query.get('query_type', 'unknown')
+        timestamp = parsed_query.get('timestamp_seconds')
+        
+        if timestamp is None:
+            return {
+                'query_type': 'unknown',
+                'message': f"Could not extract a valid timestamp from: '{original_query}'. Please include a time reference like '30 seconds', '1:30', or '2 minutes'."
+            }
+        
+        # Execute based on query type
+        if query_type == 'before':
+            events = self.find_events_before_timestamp(timestamp)
+            return {
+                'query_type': 'before',
+                'timestamp': timestamp,
+                'events': events
+            }
+        
+        elif query_type == 'after':
+            events = self.find_events_after_timestamp(timestamp)
+            return {
+                'query_type': 'after', 
+                'timestamp': timestamp,
+                'events': events
+            }
+        
+        elif query_type in ['at', 'around']:
+            # For "at" queries, show events before and after the timestamp
+            window_size = 15  # 15 second window
+            events_before = self.find_events_before_timestamp(timestamp + window_size)
+            events_after = self.find_events_after_timestamp(timestamp - window_size) 
+            
+            # Combine and filter to window around timestamp
+            all_events = []
+            for event in events_before + events_after:
+                event_time = event.get('timestamp', 0)
+                if abs(event_time - timestamp) <= window_size:
+                    all_events.append(event)
+            
+            # Sort by timestamp
+            all_events.sort(key=lambda x: x.get('timestamp', 0))
+            
+            return {
+                'query_type': 'around',
+                'timestamp': timestamp,
+                'events': all_events
+            }
+        
+        elif query_type == 'co_occurring':
+            objects = self.find_co_occurring_objects(timestamp)
+            return {
+                'query_type': 'co_occurring',
+                'timestamp': timestamp, 
+                'objects': objects
+            }
+        
+        else:
+            return {
+                'query_type': 'general',
+                'message': f"I understand you're asking about temporal relationships, but I'm not sure how to handle: '{original_query}'. Try asking about events before/after a specific time, or what was happening at a particular moment."
+            }
+    
+    def _fallback_temporal_parsing(self, query: str) -> Dict:
+        """Fallback to regex parsing if LLM parsing fails"""
+        import re
         query_lower = query.lower()
         
-        # Simple pattern matching for common queries
-        if "before" in query_lower:
-            # Extract timestamp if mentioned
-            import re
-            time_matches = re.findall(r'(\d+):(\d+)', query)
-            if time_matches:
-                minutes, seconds = map(int, time_matches[0])
-                timestamp = minutes * 60 + seconds
-                events = self.find_events_before_timestamp(timestamp)
-                return {
-                    'query_type': 'before',
-                    'timestamp': timestamp,
-                    'events': events
-                }
+        # Try to extract any time references with flexible patterns
+        time_patterns = [
+            r'(\d+):(\d+)',  # MM:SS format
+            r'(\d+)\s*minutes?\s*(\d+)\s*seconds?',  # X minutes Y seconds
+            r'(\d+)\s*minutes?',  # X minutes
+            r'(\d+)\s*seconds?'   # X seconds
+        ]
         
-        elif "after" in query_lower:
-            time_matches = re.findall(r'(\d+):(\d+)', query)
-            if time_matches:
-                minutes, seconds = map(int, time_matches[0])
-                timestamp = minutes * 60 + seconds
-                events = self.find_events_after_timestamp(timestamp)
-                return {
-                    'query_type': 'after',
-                    'timestamp': timestamp,
-                    'events': events
-                }
+        timestamp = None
+        for pattern in time_patterns:
+            matches = re.findall(pattern, query)
+            if matches:
+                if ':' in pattern:
+                    # MM:SS format
+                    minutes, seconds = map(int, matches[0])
+                    timestamp = minutes * 60 + seconds
+                elif 'minutes' in pattern and 'seconds' in pattern:
+                    # X minutes Y seconds
+                    minutes, seconds = map(int, matches[0])
+                    timestamp = minutes * 60 + seconds
+                elif 'minutes' in pattern:
+                    # X minutes only
+                    timestamp = int(matches[0]) * 60
+                elif 'seconds' in pattern:
+                    # X seconds only
+                    timestamp = int(matches[0])
+                break
         
-        elif "together" in query_lower or "same time" in query_lower:
-            time_matches = re.findall(r'(\d+):(\d+)', query)
-            if time_matches:
-                minutes, seconds = map(int, time_matches[0])
-                timestamp = minutes * 60 + seconds
-                objects = self.find_co_occurring_objects(timestamp)
-                return {
-                    'query_type': 'co_occurring',
-                    'timestamp': timestamp,
-                    'objects': objects
-                }
+        if timestamp is None:
+            return {
+                'query_type': 'unknown',
+                'message': 'Could not find a time reference in your query. Please include a time like "30 seconds", "1:30", or "2 minutes".'
+            }
         
-        # Default: return summary
-        return {
-            'query_type': 'unknown',
-            'message': 'Query not recognized. Try phrases like "what happened before 2:30" or "objects at same time as 1:15"'
-        }
+        # Determine query type from keywords
+        if any(word in query_lower for word in ['before', 'prior', 'earlier']):
+            events = self.find_events_before_timestamp(timestamp)
+            return {'query_type': 'before', 'timestamp': timestamp, 'events': events}
+        elif any(word in query_lower for word in ['after', 'following', 'later']):
+            events = self.find_events_after_timestamp(timestamp)
+            return {'query_type': 'after', 'timestamp': timestamp, 'events': events}
+        elif any(word in query_lower for word in ['at', 'during', 'around', 'near']):
+            # Show events around the timestamp
+            window_size = 15
+            events_before = self.find_events_before_timestamp(timestamp + window_size)
+            events_after = self.find_events_after_timestamp(timestamp - window_size)
+            all_events = [e for e in events_before + events_after 
+                         if abs(e.get('timestamp', 0) - timestamp) <= window_size]
+            all_events.sort(key=lambda x: x.get('timestamp', 0))
+            return {'query_type': 'around', 'timestamp': timestamp, 'events': all_events}
+        else:
+            # Default to showing events around the timestamp
+            events_before = self.find_events_before_timestamp(timestamp + 15)
+            events_after = self.find_events_after_timestamp(timestamp - 15)
+            all_events = [e for e in events_before + events_after 
+                         if abs(e.get('timestamp', 0) - timestamp) <= 15]
+            all_events.sort(key=lambda x: x.get('timestamp', 0))
+            return {'query_type': 'around', 'timestamp': timestamp, 'events': all_events}
     
     def get_graph_statistics(self) -> Dict:
         """Get graph statistics and metrics"""

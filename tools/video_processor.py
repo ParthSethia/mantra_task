@@ -4,7 +4,7 @@ import json
 from typing import Dict, List, Optional
 
 from load_video import get_audio_from_video
-from create_video_transcript import get_transcript
+from create_video_transcript import get_transcript, get_video_id
 from video_frame_processor import VideoFrameProcessor
 from object_tracker import ObjectTracker
 from utils.graph_store import VideoGraphStore
@@ -81,7 +81,8 @@ class VideoProcessor:
                     transcript_result = get_transcript(
                         audio_path, 
                         model_name=self.audio_config['whisper_model_size'],
-                        output_path=transcript_path
+                        output_path=transcript_path,
+                        video_path=video_path  # Pass video path for video-specific caching
                     )
                     results['components']['transcript'] = {
                         'status': 'completed',
@@ -106,23 +107,25 @@ class VideoProcessor:
             analyzed_frames = self.frame_processor.process_video_frames(video_path)
             important_frames = self.frame_processor.get_important_frames(analyzed_frames)
             
+            # Use video-specific analysis filename
+            video_id = get_video_id(video_path)
             results['components']['frames'] = {
                 'status': 'completed',
                 'total_frames': len(analyzed_frames),
                 'important_frames': len(important_frames),
-                'analysis_file': os.path.join(self.cache_config['metadata_directory'], 'frame_analysis.json')
+                'analysis_file': os.path.join(self.cache_config['metadata_directory'], f'frame_analysis_{video_id}.json')
             }
             
             # Step 4: Object tracking (if enabled)
             tracking_data = None
             if self.object_tracker.tracking_config['enabled']:
                 print("Step 4: Object tracking and detection...")
-                tracking_data = self._process_object_tracking(video_path)
+                tracking_data = self._process_object_tracking(video_path, video_id)
                 
                 results['components']['tracking'] = {
                     'status': 'completed' if tracking_data else 'failed',
                     'tracks_found': len(tracking_data.get('tracks', {})) if tracking_data else 0,
-                    'tracking_file': os.path.join(self.cache_config['metadata_directory'], 'object_tracking.json')
+                    'tracking_file': os.path.join(self.cache_config['metadata_directory'], f'object_tracking_{video_id}.json')
                 }
             else:
                 print("Step 4: Object tracking disabled")
@@ -130,11 +133,11 @@ class VideoProcessor:
             
             # Step 5: Graph database population
             print("Step 5: Building knowledge graph...")
-            self._build_knowledge_graph(transcript_result, analyzed_frames, tracking_data)
+            self._build_knowledge_graph(transcript_result, analyzed_frames, tracking_data, video_id)
             
             results['components']['graph'] = {
                 'status': 'completed',
-                'graph_file': os.path.join(self.cache_config['metadata_directory'], 'knowledge_graph.json')
+                'graph_file': os.path.join(self.cache_config['metadata_directory'], f'knowledge_graph_{video_id}.json')
             }
             
             # Step 6: Create consolidated metadata
@@ -143,7 +146,9 @@ class VideoProcessor:
                 transcript_result, analyzed_frames, important_frames, tracking_data
             )
             
-            metadata_file = os.path.join(self.cache_config['metadata_directory'], 'video_metadata.json')
+            # Use video-specific metadata filename
+            video_id = get_video_id(video_path)
+            metadata_file = os.path.join(self.cache_config['metadata_directory'], f'video_metadata_{video_id}.json')
             with open(metadata_file, 'w') as f:
                 json.dump(consolidated_data, f, indent=2)
             
@@ -168,7 +173,7 @@ class VideoProcessor:
             results['error'] = str(e)
             return results
     
-    def _process_object_tracking(self, video_path: str) -> Optional[Dict]:
+    def _process_object_tracking(self, video_path: str, video_id: str) -> Optional[Dict]:
         """Process video for object tracking"""
         try:
             import cv2
@@ -215,8 +220,8 @@ class VideoProcessor:
             # Get tracking summary and save
             tracking_summary = self.object_tracker.get_track_summary()
             
-            # Save tracking data
-            tracking_file = os.path.join(self.cache_config['metadata_directory'], 'object_tracking.json')
+            # Save tracking data with video-specific filename
+            tracking_file = os.path.join(self.cache_config['metadata_directory'], f'object_tracking_{video_id}.json')
             self.object_tracker.save_tracking_data(tracking_file)
             
             print(f"Object tracking completed. Found {tracking_summary['total_tracks']} tracks")
@@ -232,7 +237,7 @@ class VideoProcessor:
             return None
     
     def _build_knowledge_graph(self, transcript_result: Dict, analyzed_frames: List[Dict], 
-                              tracking_data: Optional[Dict]):
+                              tracking_data: Optional[Dict], video_id: str):
         """Build knowledge graph with all video data"""
         try:
             # Create video node
@@ -262,8 +267,8 @@ class VideoProcessor:
             if tracking_data and tracking_data.get('tracks'):
                 self.graph_store.add_object_tracks(tracking_data)
             
-            # Save graph
-            graph_file = os.path.join(self.cache_config['metadata_directory'], 'knowledge_graph.json')
+            # Save graph with video-specific filename
+            graph_file = os.path.join(self.cache_config['metadata_directory'], f'knowledge_graph_{video_id}.json')
             self.graph_store.save_graph(graph_file)
             
             # Print statistics
