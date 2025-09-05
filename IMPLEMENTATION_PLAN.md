@@ -22,6 +22,7 @@ Building a comprehensive video chat assistant that processes video content, iden
 - **Video Caching System**: `tools/utils/video_cache.py` - Intelligent metadata caching
 - **CCTV Support**: `config_cctv.yaml` - Surveillance footage processing without audio
 - **Cache Management**: `manage_cache.py` - Cache statistics and cleanup utilities
+- **Main Interface**: `main.py` - Interactive CLI chatbot with auto-detection and commands
 
 ### Current Project Structure ✅
 ```
@@ -31,6 +32,7 @@ Mantra Softech/
 ├── IMPLEMENTATION_PLAN.md                     # This file
 ├── config.yaml                                # ✅ Enhanced configuration
 ├── requirements.txt                           # ✅ Complete dependencies
+├── main.py                                    # ✅ Interactive CLI chatbot interface
 ├── test_implementation.py                     # ✅ Testing script with CCTV support
 ├── test_florence2.py                         # ✅ HF model testing
 ├── config_cctv.yaml                          # ✅ CCTV-optimized configuration
@@ -487,7 +489,10 @@ The current implementation provides a **fully functional multimodal video chat a
 9. **Support temporal queries** ("What happened before 2:30?")
 10. **Provide object-aware conversations** ("Show me car_3's movements")
 
-**Usage**: Run `python test_implementation.py` to test the complete system.
+**Usage**: 
+- **Interactive Mode**: `python main.py data/test_sample5.mp4` (or any video file)
+- **Testing**: `python test_implementation.py` to test the complete system
+- **Cache Management**: `python manage_cache.py stats` to view cache statistics
 
 ---
 
@@ -501,6 +506,7 @@ The current implementation provides a **fully functional multimodal video chat a
 - **Video Caching**: MD5-based validation system for instant reprocessing
 - **CCTV Support**: Silent video processing with surveillance-optimized configurations
 - **Enhanced Chatbot**: Object-aware conversations with temporal query support
+- **Main CLI Interface**: Interactive chatbot with auto-detection and special commands
 - **Bug Fixes**: DeepSort import resolution, NetworkX parameter conflicts resolved
 
 ### Configuration Files
@@ -511,7 +517,37 @@ The current implementation provides a **fully functional multimodal video chat a
 - `test_sample5.mp4`: Regular video with audio/transcript
 - `test_sample4.mp4`: CCTV footage (silent, visual-only processing)
 
+### Main CLI Interface
+- `main.py`: Professional interactive chatbot interface
+- Auto-detection of video types (CCTV vs regular)
+- Smart configuration selection based on video content
+- Special commands: `moments`, `objects`, `tracks`, `transcript`, `summary`
+- Comprehensive error handling and troubleshooting guidance
+- Professional banner and progress indicators
+
 ### Cache Management
 - `manage_cache.py`: Statistics, cleanup, and invalidation utilities
 - Automatic cache validation and intelligent reprocessing
 - Significant performance improvements for repeated video analysis
+
+### Usage Examples
+```bash
+# Interactive chatbot (auto-detects everything)
+python main.py data/test_sample5.mp4
+
+# CCTV surveillance footage
+python main.py data/test_sample4.mp4
+
+# Custom configuration
+python main.py video.mp4 --config custom_config.yaml
+
+# Force video type
+python main.py video.mp4 --type cctv
+
+# Cache management
+python manage_cache.py stats
+python manage_cache.py cleanup
+
+# System testing
+python test_implementation.py
+```
