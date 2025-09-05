@@ -1,5 +1,5 @@
 from langchain_ollama import OllamaEmbeddings
 
 embeddings = OllamaEmbeddings(
-    model="llama3",
+    model="granite-embedding:30m",
 )

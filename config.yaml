@@ -1,3 +1,60 @@
-video_path : ""
-audio_path : ""
-whisper_model_size : "small"
+# Video processing settings
+video_processing:
+  input_path: "data/test_sample5.mp4"
+  frame_extraction_fps: 1
+  chunk_duration_seconds: 30
+  overlap_seconds: 5
+  supported_formats: [mp4, avi, mov, mkv]
+  # Image optimization settings
+  resize_dimensions: [640, 480]  # Width x Height - smaller for faster processing
+  jpeg_quality: 85  # Compression quality (0-100)
+  
+# Audio processing
+audio_processing:
+  output_path: "cache/audio.mp3"
+  whisper_model_size: "small"
+  transcript_output_path: "cache/transcript.txt"
+
+# VLM settings
+vlm:
+  # Model type: "ollama", "blip", or "florence2"
+  model_type: "florence2"
+  
+  # Ollama settings
+  model_name: "gemma3:4b"
+  temperature: 0
+  
+  # HuggingFace model settings (when model_type is "blip" or "florence2")
+  huggingface:
+    device: "auto"  # "cuda", "cpu", or "auto"
+    
+    # BLIP settings
+    blip_model: "Salesforce/blip-image-captioning-large"
+    blip_max_length: 50
+    
+    # Florence-2 settings  
+    florence2_model: "microsoft/Florence-2-large"
+    florence2_task: "<DETAILED_CAPTION>"  # <CAPTION>, <DETAILED_CAPTION>, <OD>, etc.
+  
+  # Processing settings
+  importance_threshold: 0.6
+  batch_size: 4
+  context_frames: 3
+
+# Cache settings
+cache:
+  directory: "cache"
+  frames_directory: "cache/frames"
+  metadata_directory: "cache/metadata"
+  
+# Vector store settings
+vector_store:
+  uri: "./milvus_video.db"
+  index_type: "FLAT"
+  metric_type: "L2"
+  
+# Memory settings
+memory:
+  session_retention_hours: 24
+  max_conversation_history: 100
+  enable_cross_session_memory: true

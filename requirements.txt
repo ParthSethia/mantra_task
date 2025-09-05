@@ -1,0 +1,30 @@
+# Core video processing
+opencv-python>=4.8.0
+moviepy>=1.0.3
+Pillow>=10.0.0
+
+# Audio transcription
+openai-whisper>=20231117
+
+# LLM and embeddings (Ollama-based)
+langchain>=0.1.0
+langchain-ollama>=0.1.0
+langchain-community>=0.0.1
+langchain-milvus>=0.1.0
+
+# Vector database
+pymilvus>=2.3.0
+
+# Configuration and utilities  
+PyYAML>=6.0
+numpy>=1.24.0
+
+# HuggingFace models (optional - for BLIP/Florence-2 support)
+torch>=2.0.0
+transformers>=4.37.0  # Updated for better Florence-2 support
+accelerate>=0.24.0
+# Alternative: Use transformers==4.36.2 if Florence-2 issues persist
+
+# Optional: For future object tracking
+# torchvision>=0.15.0
+# ultralytics>=8.0.0
