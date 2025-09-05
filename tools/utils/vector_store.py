@@ -1,11 +1,10 @@
-import yaml
 from langchain_milvus import Milvus
 from .embedding import embeddings
+from .config_loader import load_config
 
 class VideoVectorStore:
     def __init__(self, config_path: str = "config.yaml"):
-        with open(config_path, 'r') as f:
-            config = yaml.safe_load(f)
+        config = load_config(config_path)
         
         self.vector_config = config['vector_store']
         

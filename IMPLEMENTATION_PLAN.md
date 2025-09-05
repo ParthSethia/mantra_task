@@ -24,42 +24,63 @@ Building a comprehensive video chat assistant that processes video content, iden
 - **Cache Management**: `manage_cache.py` - Cache statistics and cleanup utilities
 - **Main Interface**: `main.py` - Interactive CLI chatbot with auto-detection and commands
 
-### Current Project Structure ✅
+### Current Project Structure ✅ (Updated - Organized)
 ```
 Mantra Softech/
-├── Assignment_ Multimodal Chat Assistant.pdf
-├── CLAUDE.md
-├── IMPLEMENTATION_PLAN.md                     # This file
-├── config.yaml                                # ✅ Enhanced configuration
-├── requirements.txt                           # ✅ Complete dependencies
 ├── main.py                                    # ✅ Interactive CLI chatbot interface
-├── test_implementation.py                     # ✅ Testing script with CCTV support
-├── test_florence2.py                         # ✅ HF model testing
-├── config_cctv.yaml                          # ✅ CCTV-optimized configuration
-├── manage_cache.py                            # ✅ Cache management utility
-├── cache/                                     # Processing cache
-│   ├── audio.mp3
-│   ├── transcript.txt
-│   ├── frames/                               # ✅ Extracted frames
-│   └── metadata/                             # ✅ Analysis metadata
-├── data/
-│   └── test_sample5.mp4                      # Test video
-├── testing.ipynb
-└── tools/                                    # Main codebase
-    ├── load_video.py                         # ✅ Audio extraction
-    ├── create_video_transcript.py           # ✅ Whisper transcription
-    ├── video_frame_processor.py             # ✅ NEW: Frame processing pipeline
-    ├── video_processor.py                   # ✅ NEW: Main orchestrator
-    ├── enhanced_chatbot.py                  # ✅ NEW: Full chatbot with temporal queries
-    ├── hf_models.py                         # ✅ NEW: HuggingFace VLM support
-    ├── object_tracker.py                   # ✅ NEW: YOLO11 + DeepSORT tracking
-    ├── chatbot.py                           # Legacy (replaced by enhanced_chatbot.py)
-    └── utils/
-        ├── embedding.py                     # ✅ Ollama embeddings (granite-embedding:30m)
-        ├── vector_store.py                  # ✅ Enhanced Milvus integration
-        ├── chat_memory.py                   # ✅ Complete session management
-        ├── graph_store.py                   # ✅ NEW: NetworkX graph database
-        └── video_cache.py                   # ✅ NEW: Intelligent video caching
+├── server.py                                 # ✅ Web server (Flask + Gradio)
+├── requirements.txt                           # ✅ Complete dependencies
+├── README.md                                  # ✅ Comprehensive project documentation
+├── IMPLEMENTATION_PLAN.md                     # This file
+├── CLAUDE.md                                  # Project guidance for AI assistants
+├── Assignment_ Multimodal Chat Assistant.pdf  # Original requirements
+│
+├── tools/                                    # ✅ Core processing modules
+│   ├── enhanced_chatbot.py                  # ✅ Main chatbot logic
+│   ├── video_processor.py                   # ✅ Video processing pipeline
+│   ├── video_frame_processor.py             # ✅ Frame-level analysis
+│   ├── object_tracker.py                   # ✅ Object detection and tracking
+│   ├── create_video_transcript.py           # ✅ Audio transcription
+│   ├── chatbot.py                           # ✅ Basic chat functionality
+│   ├── hf_models.py                         # ✅ HuggingFace model management
+│   ├── load_video.py                        # ✅ Video loading utilities
+│   └── utils/                               # Utility modules
+│       ├── vector_store.py                  # ✅ Milvus vector database
+│       ├── graph_store.py                   # ✅ NetworkX graph database
+│       ├── video_cache.py                   # ✅ Video processing cache
+│       ├── chat_memory.py                   # ✅ Conversation memory
+│       └── embedding.py                     # ✅ Text embedding utilities
+│
+├── config/                                   # ✅ Configuration files
+│   ├── config.yaml                          # ✅ Main configuration
+│   ├── config_cctv.yaml                     # ✅ CCTV-specific settings
+│   ├── architecture                         # System architecture diagram
+│   └── multimodal_chat_architecture_hd      # High-definition architecture
+│
+├── sys_prompts/                             # ✅ System prompts
+│   ├── frame_analysis_prompt.txt            # Frame analysis instructions
+│   └── final_chatbot_prompt.txt             # Chatbot behavior instructions
+│
+├── models/                                   # ✅ Pre-trained models
+│   ├── yolo11n.pt                           # YOLO object detection model
+│   └── yolov8s.pt                           # Alternative YOLO model
+│
+├── cache/                                   # Processing cache
+│   ├── metadata/                            # ✅ Analysis metadata
+│   └── [video transcripts and cache files]
+│
+├── data/                                    # Data storage
+├── uploads/                                 # Upload directory
+├── testing/                                # ✅ Test files and demos (organized)
+│   ├── test_*.py                           # ✅ Various test scripts
+│   ├── debug_vlm.py                        # ✅ VLM debugging tools
+│   ├── app.py                              # ✅ Test Flask application
+│   ├── gradio_app.py                       # ✅ Gradio interface implementation
+│   ├── gradio_demo.py                      # ✅ Gradio demo
+│   ├── manage_cache.py                     # ✅ Cache management tools
+│   └── testing.ipynb                       # ✅ Jupyter notebook for testing
+│
+└── [database and cache files]
 ```
 
 ## Implementation Progress

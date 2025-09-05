@@ -1,17 +1,16 @@
 import networkx as nx
 import json
-import yaml
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 from collections import defaultdict
 import os
+from .config_loader import load_config
 
 class VideoGraphStore:
     """Graph database for video temporal relationships and queries"""
     
     def __init__(self, config_path: str = "config.yaml"):
-        with open(config_path, 'r') as f:
-            config = yaml.safe_load(f)
+        config = load_config(config_path)
         
         self.graph_config = config['graph_database']
         self.cache_config = config['cache']

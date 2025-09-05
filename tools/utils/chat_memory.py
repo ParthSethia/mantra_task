@@ -1,13 +1,12 @@
-import yaml
 import json
 import os
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
+from .config_loader import load_config
 
 class ChatMemory:
     def __init__(self, config_path: str = "config.yaml"):
-        with open(config_path, 'r') as f:
-            config = yaml.safe_load(f)
+        config = load_config(config_path)
         
         self.memory_config = config['memory']
         self.cache_config = config['cache']

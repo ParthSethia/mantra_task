@@ -5,6 +5,10 @@ import time
 from flask import Flask
 import gradio as gr
 
+# Add testing and tools directories to path
+sys.path.append('testing')
+sys.path.append('tools')
+
 # Import both applications
 from app import app as flask_app, chat_sessions
 from gradio_app import demo as gradio_demo
