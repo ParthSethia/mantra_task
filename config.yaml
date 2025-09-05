@@ -1,7 +1,7 @@
 # Video processing settings
 video_processing:
   input_path: "data/test_sample5.mp4"
-  frame_extraction_fps: 15
+  frame_extraction_fps: 1
   chunk_duration_seconds: 30
   overlap_seconds: 5
   supported_formats: [mp4, avi, mov, mkv]
@@ -65,8 +65,8 @@ vector_store:
 # Object tracking settings
 object_tracking:
   enabled: true
-  detection_model: "yolo11"  # "yolo" or "detectron2"
-  model_size: "n"  # yolo sizes: n, s, m, l, x (n=fastest, x=most accurate)
+  detection_model: "yolov8"  # "yolo" or "detectron2"
+  model_size: "s"  # yolo sizes: n, s, m, l, x (n=fastest, x=most accurate)
   confidence_threshold: 0.5
   tracking_algorithm: "deepsort"  # "deepsort" or "bytetrack"
   max_tracks_per_frame: 50

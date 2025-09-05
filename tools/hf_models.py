@@ -92,48 +92,104 @@ class HuggingFaceVLM:
         if self.model_type == 'ollama':
             raise ValueError("Use Ollama directly for ollama model_type")
         
+        if image is None:
+            return "Analysis failed: Image not available"
+            
         try:
             if self.model_type == 'blip':
                 return self._blip_analyze(image)
             elif self.model_type == 'florence2':
                 return self._florence2_analyze(image)
+            else:
+                return f"Unknown model type: {self.model_type}"
+            
         except Exception as e:
             return f"Analysis failed: {str(e)}"
     
     def _blip_analyze(self, image: Image.Image) -> str:
         """BLIP image analysis"""
-        inputs = self.processor(image, return_tensors="pt").to(self.device)
+        if image is None:
+            return "Analysis failed: Image is None"
+            
+        try:
+            inputs = self.processor(image, return_tensors="pt").to(self.device)
+            
+            max_length = self.hf_config.get('blip_max_length', 50)
+            
+            with torch.no_grad():
+                out = self.model.generate(**inputs, max_length=max_length, num_beams=3)
+            
+            caption = self.processor.decode(out[0], skip_special_tokens=True)
+            return caption
+            
+        except Exception as e:
+            return f"Analysis failed: {str(e)}"
         
-        max_length = self.hf_config.get('blip_max_length', 50)
-        
-        with torch.no_grad():
-            out = self.model.generate(**inputs, max_length=max_length, num_beams=3)
-        
-        caption = self.processor.decode(out[0], skip_special_tokens=True)
-        return caption
-    
     def _florence2_analyze(self, image: Image.Image) -> str:
-        """Florence-2 image analysis"""
-        task = self.hf_config.get('florence2_task', '<DETAILED_CAPTION>')
-        
-        inputs = self.processor(text=task, images=image, return_tensors="pt").to(self.device)
-        
-        with torch.no_grad():
-            generated_ids = self.model.generate(
-                input_ids=inputs["input_ids"],
-                pixel_values=inputs["pixel_values"],
-                max_new_tokens=1024,
-                num_beams=3
+        """Florence-2 image analysis with robust fallbacks"""
+        if image is None:
+            return "Analysis failed: Image is None"
+
+        try:
+            if not hasattr(image, 'width') or not hasattr(image, 'height'):
+                return "Analysis failed: Image missing width/height attributes"
+
+            task = self.hf_config.get('florence2_task', '<DETAILED_CAPTION>')
+            inputs = self.processor(text=task, images=image, return_tensors="pt").to(self.device)
+            
+            generated_ids = None
+
+            # Strategy 1: Standard generation
+            try:
+                with torch.no_grad():
+                    generated_ids = self.model.generate(
+                        **inputs,
+                        max_new_tokens=512,
+                        do_sample=False
+                    )
+            except Exception:
+                # Strategy 2: Disable cache (fixes Florence-2 past_key_values issue)
+                try:
+                    with torch.no_grad():
+                        generated_ids = self.model.generate(
+                            **inputs,
+                            max_new_tokens=512,
+                            do_sample=False,
+                            use_cache=False
+                        )
+                except Exception:
+                    # Strategy 3: Manual forward pass fallback
+                    try:
+                        with torch.no_grad():
+                            outputs = self.model(**inputs)
+                            logits = outputs.logits
+                            tokens = torch.argmax(logits, dim=-1)
+                            generated_text = self.processor.batch_decode(tokens, skip_special_tokens=True)[0]
+                        return generated_text
+                    except Exception as e3:
+                        raise Exception(f"All Florence-2 generation strategies failed. Last error: {e3}")
+
+            if generated_ids is None:
+                raise Exception("No generation strategy succeeded")
+
+            # Decode and post-process
+            generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=False)[0]
+            parsed_answer = self.processor.post_process_generation(
+                generated_text, task=task, image_size=(image.width, image.height)
             )
-        
-        generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=False)[0]
-        
-        parsed_answer = self.processor.post_process_generation(
-            generated_text, task=task, image_size=(image.width, image.height)
-        )
-        
-        return str(parsed_answer)
+
+            return str(parsed_answer)
+
+        except Exception as e:
+            return f"Analysis failed: {str(e)}"
+
     
     def analyze_batch(self, images: List[Image.Image]) -> List[str]:
         """Analyze multiple images"""
-        return [self.analyze_image(img) for img in images]
+        results = []
+        for img in images:
+            if img is None:
+                results.append("Analysis failed: Image not available")
+            else:
+                results.append(self.analyze_image(img))
+        return results

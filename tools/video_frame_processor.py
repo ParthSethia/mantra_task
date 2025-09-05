@@ -57,15 +57,22 @@ class VideoFrameProcessor:
         return prompt_func | self.llm | StrOutputParser()
     
     def convert_to_base64(self, pil_image: Image.Image) -> str:
-        # Resize image for faster processing
-        target_size = tuple(self.video_config.get('resize_dimensions', [640, 480]))
-        resized_image = pil_image.resize(target_size, Image.Resampling.LANCZOS)
-        
-        buffered = BytesIO()
-        quality = self.video_config.get('jpeg_quality', 85)
-        resized_image.save(buffered, format="JPEG", quality=quality)
-        img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
-        return img_str
+        if pil_image is None:
+            raise ValueError("PIL image is None, cannot convert to base64")
+            
+        try:
+            # Resize image for faster processing
+            target_size = tuple(self.video_config.get('resize_dimensions', [640, 480]))
+            resized_image = pil_image.resize(target_size, Image.Resampling.LANCZOS)
+            
+            buffered = BytesIO()
+            quality = self.video_config.get('jpeg_quality', 85)
+            resized_image.save(buffered, format="JPEG", quality=quality)
+            img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
+            return img_str
+            
+        except Exception as e:
+            raise ValueError(f"Failed to convert image to base64: {str(e)}")
     
     def extract_frames(self, video_path: str) -> List[Dict]:
         video = cv2.VideoCapture(video_path)
@@ -83,28 +90,45 @@ class VideoFrameProcessor:
             if not ret:
                 break
                 
+            # Validate frame data
+            if frame is None:
+                print(f"Warning: Frame {frame_count} is None, skipping...")
+                frame_count += 1
+                continue
+                
             if frame_count % frame_interval == 0:
                 timestamp = frame_count / fps
                 
-                # Convert frame to PIL Image
-                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                pil_image = Image.fromarray(frame_rgb)
-                
-                # Save frame
-                frame_filename = f"frame_{saved_frame_count:06d}_{timestamp:.2f}s.jpg"
-                frame_path = os.path.join(self.cache_config['frames_directory'], frame_filename)
-                pil_image.save(frame_path, "JPEG")
-                
-                # Store frame metadata
-                frame_data = {
-                    'frame_id': saved_frame_count,
-                    'timestamp': timestamp,
-                    'frame_path': frame_path,
-                    'pil_image': pil_image,
-                    'base64_image': self.convert_to_base64(pil_image)
-                }
-                frames_data.append(frame_data)
-                saved_frame_count += 1
+                try:
+                    # Convert frame to PIL Image
+                    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    pil_image = Image.fromarray(frame_rgb)
+                    
+                    # Save frame
+                    frame_filename = f"frame_{saved_frame_count:06d}_{timestamp:.2f}s.jpg"
+                    frame_path = os.path.join(self.cache_config['frames_directory'], frame_filename)
+                    pil_image.save(frame_path, "JPEG")
+                    
+                    # Store frame metadata
+                    try:
+                        base64_image = self.convert_to_base64(pil_image)
+                        frame_data = {
+                            'frame_id': saved_frame_count,
+                            'timestamp': timestamp,
+                            'frame_path': frame_path,
+                            'pil_image': pil_image,
+                            'base64_image': base64_image
+                        }
+                        frames_data.append(frame_data)
+                        saved_frame_count += 1
+                    except ValueError as e:
+                        print(f"Error creating base64 for frame {frame_count}: {e}")
+                        continue
+                    
+                except Exception as e:
+                    print(f"Error processing frame {frame_count} at timestamp {timestamp:.2f}: {e}")
+                    frame_count += 1
+                    continue
                 
                 if saved_frame_count % 10 == 0:
                     print(f"Extracted {saved_frame_count} frames...")
@@ -176,8 +200,23 @@ Continue for all frames..."""
         """Batch analysis using HuggingFace models"""
         analyzed_frames = []
         
-        # Extract PIL images from batch
-        images = [frame_data['pil_image'] for frame_data in frames_batch]
+        # Extract PIL images from batch, loading from file if needed
+        images = []
+        for frame_data in frames_batch:
+            if frame_data.get('pil_image') is not None:
+                images.append(frame_data['pil_image'])
+            elif 'frame_path' in frame_data and os.path.exists(frame_data['frame_path']):
+                # Reload image from file if PIL image is missing
+                try:
+                    pil_image = Image.open(frame_data['frame_path'])
+                    images.append(pil_image)
+                    frame_data['pil_image'] = pil_image  # Cache for future use
+                except Exception as e:
+                    print(f"Failed to load frame from {frame_data['frame_path']}: {e}")
+                    images.append(None)
+            else:
+                print(f"No image data available for frame {frame_data.get('frame_id', 'unknown')}")
+                images.append(None)
         
         # Get captions from HF model
         captions = self.hf_vlm.analyze_batch(images)
@@ -226,31 +265,58 @@ Continue for all frames..."""
         
         return min(max(score, 0.0), 1.0)  # Clamp between 0 and 1
     
+    def _calculate_importance_from_caption(self, caption: str) -> float:
+        """Calculate importance score from caption text (for HuggingFace models)"""
+        if not caption or "Analysis failed" in caption:
+            return 0.3  # Default low score for failed analysis
+        
+        score = 0.3  # Base score
+        
+        # Length-based scoring (longer captions tend to be more detailed)
+        if len(caption) > 100:
+            score += 0.2
+        elif len(caption) > 50:
+            score += 0.1
+        
+        # Content-based scoring
+        important_words = [
+            # People and activities
+            'person', 'people', 'man', 'woman', 'child', 'walking', 'running', 'sitting',
+            # Vehicles and movement
+            'car', 'truck', 'bus', 'bicycle', 'motorcycle', 'driving', 'moving', 'parked',
+            # Actions and events
+            'holding', 'carrying', 'using', 'working', 'talking', 'meeting', 'event',
+            # Important objects
+            'sign', 'building', 'door', 'window', 'computer', 'phone', 'book', 'tool',
+            # Scene indicators
+            'crowded', 'busy', 'active', 'empty', 'bright', 'dark', 'indoor', 'outdoor'
+        ]
+        
+        caption_lower = caption.lower()
+        word_matches = sum(1 for word in important_words if word in caption_lower)
+        score += min(word_matches * 0.05, 0.3)  # Up to 0.3 bonus for important words
+        
+        # Activity indicators (higher importance)
+        activity_words = ['moving', 'action', 'event', 'happening', 'activity', 'busy', 'active']
+        if any(word in caption_lower for word in activity_words):
+            score += 0.1
+        
+        # Multiple objects increase importance
+        if caption_lower.count('and') >= 2:  # Multiple items connected by 'and'
+            score += 0.1
+        
+        return min(max(score, 0.1), 1.0)  # Clamp between 0.1 and 1.0
+    
     def analyze_frame_importance_single(self, frame_data: Dict) -> Dict:
-        analysis_prompt = """Analyze this video frame and provide:
-1. A brief description of what's happening (2-3 sentences)
-2. Importance score (0.0-1.0) based on:
-   - Visual activity/motion
-   - Presence of people or objects
-   - Scene changes or significant events
-   - Educational or informational content value
-3. Key objects or elements visible
-4. Any text or important visual information
-
-Format your response as:
-DESCRIPTION: [your description]
-IMPORTANCE: [score from 0.0 to 1.0]
-OBJECTS: [list of key objects/elements]
-DETAILS: [any additional important details]"""
-
         try:
-            response = self.chain.invoke({
-                "text": analysis_prompt,
-                "image": frame_data['base64_image']
-            })
-            
-            # Parse response
-            importance_score = self._extract_importance_score(response)
+            if self.model_type == 'ollama':
+                # Use Ollama with LangChain for detailed analysis
+                response = self._analyze_with_ollama(frame_data)
+                importance_score = self._extract_importance_score(response)
+            else:
+                # Use HuggingFace models (BLIP/Florence-2)
+                response = self._analyze_with_huggingface(frame_data)
+                importance_score = self._calculate_importance_from_caption(response)
             
             analysis = {
                 'frame_id': frame_data['frame_id'],
@@ -273,6 +339,160 @@ DETAILS: [any additional important details]"""
                 'importance_score': 0.5,  # Default score
                 'analyzed': False
             }
+    
+    def _analyze_with_ollama(self, frame_data: Dict) -> str:
+        """Analyze frame using Ollama with detailed prompt"""
+        if self.chain is None:
+            raise ValueError("Ollama chain not initialized")
+            
+        analysis_prompt = """Analyze this video frame and provide:
+1. A brief description of what's happening (2-3 sentences)
+2. Importance score (0.0-1.0) based on:
+   - Visual activity/motion
+   - Presence of people or objects
+   - Scene changes or significant events
+   - Educational or informational content value
+3. Key objects or elements visible
+4. Any text or important visual information
+
+Format your response as:
+DESCRIPTION: [your description]
+IMPORTANCE: [score from 0.0 to 1.0]
+OBJECTS: [list of key objects/elements]
+DETAILS: [any additional important details]"""
+
+        return self.chain.invoke({
+            "text": analysis_prompt,
+            "image": frame_data['base64_image']
+        })
+    
+    def _analyze_with_huggingface(self, frame_data: Dict) -> str:
+        """Analyze frame using HuggingFace models (BLIP/Florence-2)"""
+        if self.hf_vlm is None:
+            raise ValueError("HuggingFace VLM not initialized")
+        
+        # Get PIL image, reload from file if needed
+        pil_image = frame_data.get('pil_image')
+        
+        if pil_image is None and 'frame_path' in frame_data:
+            frame_path = frame_data['frame_path']
+            if os.path.exists(frame_path):
+                try:
+                    pil_image = Image.open(frame_path)
+                    frame_data['pil_image'] = pil_image  # Cache it
+                except Exception as e:
+                    raise ValueError(f"Failed to load image from {frame_path}: {e}")
+            else:
+                raise ValueError(f"Frame path does not exist: {frame_path}")
+        
+        if pil_image is None:
+            raise ValueError("No PIL image available for analysis")
+        
+        # Get caption from HuggingFace model
+        caption = self.hf_vlm.analyze_image(pil_image)
+        
+        # Format as structured response similar to Ollama
+        formatted_response = f"DESCRIPTION: {caption}\nIMPORTANCE: [calculated from content]\nOBJECTS: [detected from description]\nDETAILS: Frame analyzed using {self.model_type} model"
+        
+        return formatted_response
+    
+    def _analyze_batch_ollama(self, frames_batch: List[Dict]) -> List[Dict]:
+        """Batch analysis using Ollama"""
+        if self.chain is None:
+            raise ValueError("Ollama chain not initialized")
+            
+        batch_prompt = """Analyze these video frames and provide analysis for EACH frame. 
+For each frame, provide:
+1. Brief description (1-2 sentences)
+2. Importance score (0.0-1.0)
+3. Key objects/elements
+
+Format response as:
+FRAME_1:
+DESCRIPTION: [description]
+IMPORTANCE: [0.0-1.0]
+OBJECTS: [objects]
+
+FRAME_2:
+DESCRIPTION: [description]
+IMPORTANCE: [0.0-1.0]
+OBJECTS: [objects]
+
+And so on for each frame..."""
+
+        # Build content with all frame images
+        content_parts = []
+        
+        # Add text prompt
+        content_parts.append({"type": "text", "text": batch_prompt})
+        
+        # Add each frame image
+        for i, frame_data in enumerate(frames_batch):
+            if 'base64_image' in frame_data and frame_data['base64_image']:
+                content_parts.append({
+                    "type": "image_url",
+                    "image_url": f"data:image/jpeg;base64,{frame_data['base64_image']}"
+                })
+        
+        try:
+            # Create message with all images
+            from langchain_core.messages import HumanMessage
+            message = HumanMessage(content=content_parts)
+            response = self.llm.invoke([message])
+            
+            # Parse batch response
+            return self._parse_batch_response(response.content, frames_batch)
+            
+        except Exception as e:
+            print(f"Ollama batch analysis failed: {e}")
+            # Fallback to individual analysis
+            return [self.analyze_frame_importance_single(frame) for frame in frames_batch]
+    
+    def _analyze_batch_huggingface(self, frames_batch: List[Dict]) -> List[Dict]:
+        """Batch analysis using HuggingFace models"""
+        if self.hf_vlm is None:
+            raise ValueError("HuggingFace VLM not initialized")
+            
+        analyzed_frames = []
+        
+        # Extract PIL images from batch, loading from file if needed
+        images = []
+        for frame_data in frames_batch:
+            if frame_data.get('pil_image') is not None:
+                images.append(frame_data['pil_image'])
+            elif 'frame_path' in frame_data and os.path.exists(frame_data['frame_path']):
+                # Reload image from file if PIL image is missing
+                try:
+                    pil_image = Image.open(frame_data['frame_path'])
+                    images.append(pil_image)
+                    frame_data['pil_image'] = pil_image  # Cache for future use
+                except Exception as e:
+                    print(f"Failed to load frame from {frame_data['frame_path']}: {e}")
+                    images.append(None)
+            else:
+                print(f"No image data available for frame {frame_data.get('frame_id', 'unknown')}")
+                images.append(None)
+        
+        # Get captions from HF model
+        captions = self.hf_vlm.analyze_batch(images)
+        
+        # Convert to analysis format
+        for i, frame_data in enumerate(frames_batch):
+            caption = captions[i] if i < len(captions) else "Analysis failed"
+            
+            # Simple importance scoring based on caption length and content
+            importance_score = self._calculate_importance_from_caption(caption)
+            
+            analyzed_frames.append({
+                'frame_id': frame_data['frame_id'],
+                'timestamp': frame_data['timestamp'],
+                'frame_path': frame_data['frame_path'],
+                'vlm_analysis': f"DESCRIPTION: {caption}\nIMPORTANCE: {importance_score:.2f}\nDETAILS: Frame analyzed using {self.model_type} model",
+                'importance_score': importance_score,
+                'analyzed': True
+            })
+        
+        return analyzed_frames
     
     def _parse_batch_response(self, response: str, frames_batch: List[Dict]) -> List[Dict]:
         """Parse batch analysis response into individual frame analyses"""

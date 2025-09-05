@@ -39,3 +39,13 @@ networkx>=3.0
 
 # Optional: Neo4j (for production graph database)
 # neo4j>=5.0.0
+
+# Web interfaces and API server
+flask>=2.0.0
+flask-cors>=4.0.0
+gradio>=4.0.0
+werkzeug>=2.0.0
+
+# Additional utilities for web interfaces
+requests>=2.31.0  # For API testing
+uuid  # Built-in but useful for session management

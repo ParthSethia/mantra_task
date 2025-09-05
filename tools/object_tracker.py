@@ -2,11 +2,9 @@ import cv2
 import numpy as np
 import yaml
 import json
-import os
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple
 from dataclasses import dataclass
 from collections import defaultdict
-import random
 import traceback
 
 @dataclass
@@ -92,28 +90,48 @@ class ObjectTracker:
             
             # Initialize YOLO
             model_size = self.tracking_config['model_size']
-            model_path = f"yolo11{model_size}.pt"
+            model_path = f"yolov8{model_size}.pt"
             print(f"Loading YOLO model: {model_path}")
             self.detector = YOLO(model_path)
             
             # Initialize DeepSORT
             print("Initializing DeepSORT tracker...")
-            self.tracker = DeepSort(
-                max_age=50,
-                n_init=3,
-                nms_max_overlap=1.0,
-                max_cosine_distance=0.3,
-                nn_budget=None,
-                override_track_class=None,
-                embedder="mobilenet",
-                half=True,
-                bgr=True,
-                embedder_gpu=True,
-                embedder_model_name=None,
-                embedder_wts=None,
-                polygon=False,
+            try:
+                # Try with embedder first
+                self.tracker = DeepSort(
+                    max_age=50,
+                    n_init=3,
+                    nms_max_overlap=1.0,
+                    max_cosine_distance=0.3,
+                    nn_budget=None,
+                    override_track_class=None,
+                    embedder="mobilenet",
+                    half=True,
+                    bgr=True,
+                    embedder_gpu=True,
+                    embedder_model_name=None,
+                    embedder_wts=None,
+                    polygon=False,
                 today=None
-            )
+                )
+            except Exception as embedder_error:
+                # If embedder fails, try without deep features
+                print(f"Embedder initialization failed: {embedder_error}")
+                print("Trying DeepSORT without embedder...")
+                self.tracker = DeepSort(
+                    max_age=50,
+                    n_init=3,
+                    nms_max_overlap=1.0,
+                    max_cosine_distance=0.3,
+                    nn_budget=None,
+                    override_track_class=None,
+                    embedder=None,  # Disable embedder
+                    half=False,
+                    bgr=True,
+                    embedder_gpu=False,
+                    polygon=False,
+                    today=None
+                )
             
             print("Object tracking models initialized successfully")
             
@@ -161,10 +179,22 @@ class ObjectTracker:
                 boxes = result.boxes
                 if boxes is not None:
                     for i in range(len(boxes)):
-                        # Get detection data
-                        bbox = boxes.xyxy[i].cpu().numpy().astype(int)
+                        # Get detection data - ensure Python types, not numpy types
+                        bbox_np = boxes.xyxy[i].cpu().numpy()
+                        
+                        # Validate bbox shape
+                        if bbox_np.shape != (4,):
+                            print(f"Warning: Invalid bbox shape {bbox_np.shape}, expected (4,). Skipping detection.")
+                            continue
+                            
+                        bbox = [int(x) for x in bbox_np]  # Convert to Python ints
                         confidence = float(boxes.conf[i].cpu().numpy())
                         class_id = int(boxes.cls[i].cpu().numpy())
+                        
+                        # Validate bbox values
+                        if len(bbox) != 4 or any(not isinstance(x, (int, float)) for x in bbox):
+                            print(f"Warning: Invalid bbox format {bbox}. Skipping detection.")
+                            continue
                         
                         # Filter by confidence and class
                         if (confidence >= self.tracking_config['confidence_threshold'] and
@@ -189,7 +219,7 @@ class ObjectTracker:
             print(f"Object detection failed: {e}")
             return []
     
-    def update_tracks(self, detections: List[Detection], timestamp: float) -> List[Track]:
+    def update_tracks(self, detections: List[Detection], timestamp: float, frame: np.ndarray = None) -> List[Track]:
         """Update object tracks with new detections"""
         if not self.tracking_config['enabled'] or self.tracker is None:
             return []
@@ -198,11 +228,54 @@ class ObjectTracker:
             # Prepare detections for DeepSORT
             raw_detections = []
             for det in detections:
-                x1, y1, x2, y2 = det.bbox
-                raw_detections.append([x1, y1, x2-x1, y2-y1, det.confidence])
+                try:
+                    # Validate bbox structure
+                    if not hasattr(det.bbox, '__len__') or len(det.bbox) != 4:
+                        print(f"Warning: Invalid detection bbox format: {det.bbox}")
+                        continue
+                        
+                    x1, y1, x2, y2 = det.bbox
+                    # Ensure all values are Python floats, not numpy types
+                    x1, y1, x2, y2 = float(x1), float(y1), float(x2), float(y2)
+                    confidence = float(det.confidence)
+                    
+                    # Validate converted values
+                    width, height = x2 - x1, y2 - y1
+                    if width <= 0 or height <= 0:
+                        print(f"Warning: Invalid bbox dimensions: w={width}, h={height}")
+                        continue
+                        
+                    raw_detections.append([x1, y1, width, height, confidence])
+                    
+                except (ValueError, TypeError) as e:
+                    print(f"Warning: Failed to prepare detection for DeepSORT: {e}")
+                    continue
             
-            # Update tracker
-            tracks_output = self.tracker.update_tracks(raw_detections, frame=None)
+            # Check if we have valid detections
+            if not raw_detections:
+                print("No valid detections for tracking")
+                return []
+                
+            # Debug: Print detection format
+            if len(raw_detections) > 0:
+                first_det = raw_detections[0]
+                if not isinstance(first_det, list) or len(first_det) != 5:
+                    print(f"Warning: Invalid detection format: {first_det}")
+                    return []
+            
+            # Update tracker with frame data
+            if frame is not None:
+                tracks_output = self.tracker.update_tracks(raw_detections, frame=frame)
+            else:
+                # Fallback: try without frame but this might cause the error
+                try:
+                    tracks_output = self.tracker.update_tracks(raw_detections, frame=None)
+                except Exception as e:
+                    if "embeddings or frame must be given" in str(e):
+                        print("DeepSORT requires frame data, skipping tracking for this frame")
+                        return []
+                    else:
+                        raise e
             
             current_active_tracks = []
             
@@ -210,8 +283,21 @@ class ObjectTracker:
                 if not track.is_confirmed():
                     continue
                 
-                track_id = track.track_id
+                # Convert numpy types to Python types to avoid len() errors
+                track_id = int(track.track_id) if hasattr(track.track_id, 'item') else track.track_id
                 bbox = track.to_ltrb()  # Get bbox as [left, top, right, bottom]
+                
+                # Ensure bbox is a list/array, not a single value
+                if not hasattr(bbox, '__len__'):
+                    print(f"Warning: bbox is not iterable: {bbox}, skipping track {track_id}")
+                    continue
+                    
+                # Convert bbox coordinates to Python floats
+                try:
+                    bbox = [float(x) for x in bbox]
+                except (TypeError, ValueError) as e:
+                    print(f"Warning: bbox conversion failed for track {track_id}: {e}")
+                    continue
                 
                 # Find corresponding detection for class info
                 detection_class = "unknown"
@@ -262,7 +348,15 @@ class ObjectTracker:
             return current_active_tracks
             
         except Exception as e:
-            print(f"Track update failed: {e}")
+            error_msg = str(e)
+            if ("numpy.int64" in error_msg or "float" in error_msg) and "no len()" in error_msg:
+                print(f"Track update failed: Data type error - {e}")
+                print("This indicates invalid detection format passed to DeepSORT.")
+                print("Expected format: [[x, y, width, height, confidence], ...]")
+                if raw_detections:
+                    print(f"Received: {raw_detections[:2]}...")  # Show first 2 detections
+            else:
+                print(f"Track update failed: {e}")
             return []
     
     def process_frame(self, frame: np.ndarray, timestamp: float) -> Tuple[List[Track], np.ndarray]:
@@ -274,7 +368,7 @@ class ObjectTracker:
         detections = self.detect_objects(frame, timestamp)
         
         # Update tracks
-        active_tracks = self.update_tracks(detections, timestamp)
+        active_tracks = self.update_tracks(detections, timestamp, frame)
         
         # Draw tracks on frame (optional visualization)
         annotated_frame = self._draw_tracks(frame.copy(), active_tracks)

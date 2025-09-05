@@ -24,16 +24,68 @@ class VideoVectorStore:
         metadatas = []
         
         for frame_data in frame_data_list:
-            texts.append(frame_data['vlm_analysis'])
+            # Clean and limit text for vector store compatibility
+            raw_text = frame_data['vlm_analysis']
+            cleaned_text = self._clean_text_for_vector_store(raw_text)
+            
+            texts.append(cleaned_text)
             metadatas.append({
                 'frame_id': frame_data['frame_id'],
                 'timestamp': frame_data['timestamp'],
+                'start_time': frame_data['timestamp'],  # Use timestamp as start_time for frame data
+                'end_time': frame_data['timestamp'],    # For frame data, start and end are the same
                 'importance_score': frame_data['importance_score'],
                 'frame_path': frame_data['frame_path'],
                 'type': 'frame_analysis'
             })
         
-        self.vector_store.add_texts(texts=texts, metadatas=metadatas)
+        try:
+            self.vector_store.add_texts(texts=texts, metadatas=metadatas)
+        except Exception as e:
+            print(f"Failed to add frame descriptions to vector store: {e}")
+            # Try adding one by one to identify problematic entries
+            for i, (text, metadata) in enumerate(zip(texts, metadatas)):
+                try:
+                    self.vector_store.add_texts(texts=[text], metadatas=[metadata])
+                except Exception as single_error:
+                    print(f"Failed to add frame {metadata['frame_id']}: {single_error}")
+                    print(f"Problematic text: {text[:200]}...")
+    
+    def _clean_text_for_vector_store(self, text: str, max_length: int = 8000) -> str:
+        """Clean and format text for vector store compatibility"""
+        if not text:
+            return "No analysis available"
+        
+        # Convert to string if not already
+        text = str(text)
+        
+        # Clean up Florence-2 specific formatting
+        # Remove dictionary-like structures: {'<DETAILED_CAPTION>': '...'}
+        import re
+        
+        # Extract content from dictionary-like structures
+        dict_pattern = r"\{'[^']+': '([^']+)'\}"
+        matches = re.findall(dict_pattern, text)
+        if matches:
+            # Use the first extracted content
+            text = matches[0]
+        
+        # Clean up common problematic patterns
+        text = re.sub(r'\{[^}]*\}', '', text)  # Remove any remaining dictionary structures
+        text = re.sub(r'<[^>]*>', '', text)    # Remove XML-like tags
+        text = text.replace('\n', ' ')          # Replace newlines with spaces
+        text = re.sub(r'\s+', ' ', text)       # Normalize whitespace
+        text = text.strip()
+        
+        # Limit text length
+        if len(text) > max_length:
+            text = text[:max_length] + "..."
+        
+        # Ensure text is not empty
+        if not text or text.isspace():
+            text = "Frame analysis content not available"
+        
+        return text
     
     def add_transcript_segments(self, transcript_segments):
         """Add transcript segments to vector store"""
@@ -41,14 +93,26 @@ class VideoVectorStore:
         metadatas = []
         
         for segment in transcript_segments:
-            texts.append(segment['text'])
+            # Clean transcript text
+            cleaned_text = self._clean_text_for_vector_store(segment['text'], max_length=4000)
+            texts.append(cleaned_text)
             metadatas.append({
                 'start_time': segment['start'],
                 'end_time': segment['end'],
                 'type': 'transcript_segment'
             })
         
-        self.vector_store.add_texts(texts=texts, metadatas=metadatas)
+        try:
+            self.vector_store.add_texts(texts=texts, metadatas=metadatas)
+        except Exception as e:
+            print(f"Failed to add transcript segments to vector store: {e}")
+            # Try adding one by one to identify problematic entries
+            for i, (text, metadata) in enumerate(zip(texts, metadatas)):
+                try:
+                    self.vector_store.add_texts(texts=[text], metadatas=[metadata])
+                except Exception as single_error:
+                    print(f"Failed to add transcript segment {i}: {single_error}")
+                    print(f"Problematic text: {text[:200]}...")
     
     def search_by_query(self, query: str, k: int = 5):
         """Search for relevant content by query"""

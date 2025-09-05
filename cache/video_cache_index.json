@@ -1,0 +1,80 @@
+{
+  "50594635f45c1653": {
+    "video_path": "/private/var/folders/b5/5hj2gt3168l_xdn56bdxddfc0000gn/T/gradio/3f6328dc79722dee24ecefc52f06db9b51313f278766fa8bcb241dfe3e44cf3a/test_sample5.mp4",
+    "processed_at": "2025-09-05T20:40:43.915791",
+    "processing_results": {
+      "video_path": "/private/var/folders/b5/5hj2gt3168l_xdn56bdxddfc0000gn/T/gradio/3f6328dc79722dee24ecefc52f06db9b51313f278766fa8bcb241dfe3e44cf3a/test_sample5.mp4",
+      "processing_status": "completed",
+      "components": {
+        "audio": {
+          "status": "completed",
+          "output_path": "cache/audio.mp3"
+        },
+        "transcript": {
+          "status": "completed",
+          "output_path": "cache/transcript.txt",
+          "segments_count": 22
+        },
+        "frames": {
+          "status": "completed",
+          "total_frames": 66,
+          "important_frames": 66,
+          "analysis_file": "cache/metadata/frame_analysis.json"
+        },
+        "tracking": {
+          "status": "completed",
+          "tracks_found": 0,
+          "tracking_file": "cache/metadata/object_tracking.json"
+        },
+        "graph": {
+          "status": "completed",
+          "graph_file": "cache/metadata/knowledge_graph.json"
+        },
+        "metadata": {
+          "status": "completed",
+          "output_path": "cache/metadata/video_metadata.json"
+        }
+      },
+      "summary": {
+        "duration": "1:06",
+        "total_frames_processed": 66,
+        "important_frames_found": 66,
+        "transcript_segments": 22,
+        "top_moments": [
+          {
+            "timestamp": 7.0,
+            "score": 0.95,
+            "description": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in..."
+          },
+          {
+            "timestamp": 8.0,
+            "score": 0.8999999999999999,
+            "description": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in..."
+          },
+          {
+            "timestamp": 9.0,
+            "score": 0.8999999999999999,
+            "description": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing spectacles and a watch, sitting..."
+          },
+          {
+            "timestamp": 19.0,
+            "score": 0.85,
+            "description": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman sitting at a table with a microphone in..."
+          },
+          {
+            "timestamp": 32.0,
+            "score": 0.85,
+            "description": "DESCRIPTION: {'<DETAILED_CAPTION>': 'The image shows a woman wearing glasses and a watch, sitting at..."
+          }
+        ],
+        "processing_complete": true
+      }
+    },
+    "cache_key": "50594635f45c1653",
+    "checksum": "86453b531be1f451093a4932277b8d78",
+    "metadata_file": "cache/metadata/video_metadata_50594635f45c1653.json",
+    "graph_file": "cache/metadata/knowledge_graph.json",
+    "frame_analysis_file": "cache/metadata/frame_analysis.json",
+    "tracking_file": "cache/metadata/object_tracking.json"
+  }
+}
